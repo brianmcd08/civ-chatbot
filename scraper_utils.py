@@ -25,6 +25,50 @@ class UnifiedEntry:
     era: str | None = None  # e.g. "Classical Era"
     charges: str | None = None  # e.g. "1", "2"
 
+    def generate_embedding_text(self) -> str:
+        """
+        Combine section, version, name, description
+
+        Returns:
+            str: combined text
+        """
+        name_part = f"{self.name}:" if self.name else None
+        version_part = f"v{self.version}" if self.version else None
+
+        return " ".join(
+            str(x)
+            for x in [
+                self.section,
+                version_part,
+                name_part,
+                self.description,
+            ]
+            if x is not None
+        )
+
+    def generate_metadata(self) -> dict[str, str]:
+        """
+        Combine version, category, subcategory, civilization,
+            great person type, era, and charges
+
+        Returns:
+            dict[str, str]
+        """
+        return {
+            k: v
+            for k, v in {
+                "section": self.section,
+                "bbg_version": self.version,
+                "category": self.category,
+                "subcategory": self.subcategory,
+                "civilization": self.civilization,
+                "great_person_type": self.great_person_type,
+                "era": self.era,
+                "charges": self.charges,
+            }
+            if v is not None
+        }
+
 
 # List of BBG versions
 versions = [
