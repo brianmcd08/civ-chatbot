@@ -65,15 +65,10 @@ def parse_leader_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     return entries
 
 
-def scrape_leaders(page: str):
+def scrape_leaders(page: str, versions_to_scrape: list[str]) -> list[UnifiedEntry]:
     all_entries: list[UnifiedEntry] = []
 
-    if page == "bbg_expanded":
-        version_list = versions[:4]
-    else:
-        version_list = versions
-
-    for version in version_list:
+    for version in versions_to_scrape:
         url = f"https://civ6bbg.github.io/en_US/{page}_{version}.html"
         response = requests.get(url)
 
@@ -92,7 +87,7 @@ def scrape_leaders(page: str):
 
 
 if __name__ == "__main__":
-    entries1 = scrape_leaders("leaders")
-    entries2 = scrape_leaders("bbg_expanded")
+    entries1 = scrape_leaders("leaders", versions)
+    entries2 = scrape_leaders("bbg_expanded", versions[:4])
     print(entries1[0])
     print(entries2[0])

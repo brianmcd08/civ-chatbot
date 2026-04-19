@@ -10,22 +10,31 @@ from scrape_policies import scrape_policies
 from scrape_religion import scrape_religion
 from scrape_tech_civics import scrape_tech_and_civics
 from scrape_world_wonders import scrape_world_wonders
-from scraper_utils import UnifiedEntry
+from scraper_utils import UnifiedEntry, versions
 
-entries: list[UnifiedEntry] = []
 
-entries.extend(scrape_combined_items())
-print(f"Entries after most: {len(entries)}")
-entries.extend(scrape_changelog())
-entries.extend(scrape_names())
-entries.extend(scrape_great_people())
-entries.extend(scrape_leaders("leaders"))
-entries.extend(scrape_leaders("bbg_expanded"))
-entries.extend(scrape_policies())
-entries.extend(scrape_tech_and_civics())
-entries.extend(scrape_natural_wonders())
-entries.extend(scrape_world_wonders())
-entries.extend(scrape_religion())
-entries.extend(scrape_citystates())
-entries.extend(scrape_governors())
-print(f"Entries after everything: {len(entries)}")
+def run_all() -> list[UnifiedEntry]:
+    entries: list[UnifiedEntry] = []
+
+    entries.extend(scrape_combined_items())
+    print(f"Entries after most: {len(entries)}")
+    entries.extend(scrape_changelog())
+    entries.extend(scrape_names())
+    entries.extend(scrape_great_people())
+    entries.extend(scrape_leaders("leaders", versions))
+    entries.extend(scrape_leaders("bbg_expanded", versions[:4]))
+    entries.extend(scrape_policies())
+    entries.extend(scrape_tech_and_civics())
+    entries.extend(scrape_natural_wonders())
+    entries.extend(scrape_world_wonders())
+    entries.extend(scrape_religion())
+    entries.extend(scrape_citystates())
+    entries.extend(scrape_governors())
+    print(f"Entries after everything: {len(entries)}")
+
+    return entries
+
+
+if __name__ == "__main__":
+    entries = run_all()
+    print(f"Total: {len(entries)}")
