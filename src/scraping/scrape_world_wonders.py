@@ -3,7 +3,8 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from scraper_utils import UnifiedEntry, versions
+from config import versions
+from schema import UnifiedEntry
 
 
 def get_era_from_comment(chart) -> str:

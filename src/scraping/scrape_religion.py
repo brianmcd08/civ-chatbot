@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-from scraper_utils import UnifiedEntry, versions
+from config import versions
+from schema import UnifiedEntry
 
 
-def parse_citystates_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_religion_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
-    Extract city-states.
+    Extract religions.
     """
 
     entries: list[UnifiedEntry] = []
@@ -31,7 +32,7 @@ def parse_citystates_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntr
 
         entries.append(
             UnifiedEntry(
-                section="city-states",
+                section="religion",
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -42,11 +43,11 @@ def parse_citystates_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntr
     return entries
 
 
-def scrape_citystates():
+def scrape_religion():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/city_states_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/religion_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
@@ -56,7 +57,7 @@ def scrape_citystates():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_citystates_page(soup, version=version)
+        page_entries = parse_religion_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")
@@ -64,5 +65,5 @@ def scrape_citystates():
 
 
 if __name__ == "__main__":
-    entries = scrape_citystates()
+    entries = scrape_religion()
     print(entries[0])

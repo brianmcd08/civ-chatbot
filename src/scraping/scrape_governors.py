@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-from scraper_utils import UnifiedEntry, versions
+from config import versions
+from schema import UnifiedEntry
 
 
-def parse_religion_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_governors_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
-    Extract religions.
+    Extract governors.
     """
 
     entries: list[UnifiedEntry] = []
@@ -16,6 +17,7 @@ def parse_religion_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]
             tag.name == "div"
             and "chart" in tag.get("class", [])
             and tag.find("h2", class_="civ-name")
+            and tag.find("h3", class_="civ-ability-name")
             and tag.find("p", class_="civ-ability-desc")
         )
     )
@@ -25,13 +27,25 @@ def parse_religion_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]
             separator=" ", strip=True
         )
 
-        item_descr = item.find("p", class_="civ-ability-desc actual-text").get_text(
-            separator=" ", strip=True
+        item_descr1 = " ".join(
+            [
+                p.get_text(separator=" ", strip=True)
+                for p in item.find_all(["h3"], class_="civ-ability-name")
+            ]
         )
+
+        item_descr2 = " ".join(
+            [
+                p.get_text(separator=" ", strip=True)
+                for p in item.find_all(["p"], class_="civ-ability-desc")
+            ]
+        )
+
+        item_descr = f"{item_descr1} {item_descr2}"
 
         entries.append(
             UnifiedEntry(
-                section="religion",
+                section="governors",
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -42,11 +56,11 @@ def parse_religion_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]
     return entries
 
 
-def scrape_religion():
+def scrape_governors():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/religion_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/governor_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
@@ -56,7 +70,7 @@ def scrape_religion():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_religion_page(soup, version=version)
+        page_entries = parse_governors_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")
@@ -64,5 +78,5 @@ def scrape_religion():
 
 
 if __name__ == "__main__":
-    entries = scrape_religion()
-    print(entries[0])
+    entries = scrape_governors()
+    print(entries[-1])

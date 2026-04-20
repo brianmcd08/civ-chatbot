@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-from scraper_utils import UnifiedEntry, versions
+from config import versions
+from schema import UnifiedEntry
 
 
-def parse_policy_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_citystates_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
-    Extract policies.
+    Extract city-states.
     """
 
     entries: list[UnifiedEntry] = []
@@ -24,17 +25,14 @@ def parse_policy_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
         item_name = item.find("h2", class_="civ-name").get_text(
             separator=" ", strip=True
         )
-        item_descr = " ".join(
-            [
-                p.get_text(separator=" ", strip=True)
-                for p in item.find_all(["p", "small"], class_="civ-ability-desc")
-            ]
+
+        item_descr = item.find("p", class_="civ-ability-desc actual-text").get_text(
+            separator=" ", strip=True
         )
 
-        # civ = get_civ_from_comment(item)
         entries.append(
             UnifiedEntry(
-                section="policies",
+                section="city-states",
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -45,11 +43,11 @@ def parse_policy_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     return entries
 
 
-def scrape_policies():
+def scrape_citystates():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/policies_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/city_states_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
@@ -59,7 +57,7 @@ def scrape_policies():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_policy_page(soup, version=version)
+        page_entries = parse_citystates_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")
@@ -67,5 +65,5 @@ def scrape_policies():
 
 
 if __name__ == "__main__":
-    entries = scrape_policies()
+    entries = scrape_citystates()
     print(entries[0])

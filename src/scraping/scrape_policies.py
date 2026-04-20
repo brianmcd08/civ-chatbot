@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-from scraper_utils import UnifiedEntry, versions
+from config import versions
+from schema import UnifiedEntry
 
 
-def parse_governors_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_policy_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
-    Extract governors.
+    Extract policies.
     """
 
     entries: list[UnifiedEntry] = []
@@ -16,7 +17,6 @@ def parse_governors_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry
             tag.name == "div"
             and "chart" in tag.get("class", [])
             and tag.find("h2", class_="civ-name")
-            and tag.find("h3", class_="civ-ability-name")
             and tag.find("p", class_="civ-ability-desc")
         )
     )
@@ -25,26 +25,17 @@ def parse_governors_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry
         item_name = item.find("h2", class_="civ-name").get_text(
             separator=" ", strip=True
         )
-
-        item_descr1 = " ".join(
+        item_descr = " ".join(
             [
                 p.get_text(separator=" ", strip=True)
-                for p in item.find_all(["h3"], class_="civ-ability-name")
+                for p in item.find_all(["p", "small"], class_="civ-ability-desc")
             ]
         )
 
-        item_descr2 = " ".join(
-            [
-                p.get_text(separator=" ", strip=True)
-                for p in item.find_all(["p"], class_="civ-ability-desc")
-            ]
-        )
-
-        item_descr = f"{item_descr1} {item_descr2}"
-
+        # civ = get_civ_from_comment(item)
         entries.append(
             UnifiedEntry(
-                section="governors",
+                section="policies",
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -55,11 +46,11 @@ def parse_governors_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry
     return entries
 
 
-def scrape_governors():
+def scrape_policies():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/governor_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/policies_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
@@ -69,7 +60,7 @@ def scrape_governors():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_governors_page(soup, version=version)
+        page_entries = parse_policy_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")
@@ -77,5 +68,5 @@ def scrape_governors():
 
 
 if __name__ == "__main__":
-    entries = scrape_governors()
-    print(entries[-1])
+    entries = scrape_policies()
+    print(entries[0])

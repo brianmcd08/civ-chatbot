@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-from scraper_utils import UnifiedEntry, versions
+from config import versions
+from schema import UnifiedEntry
 
 
 def parse_great_people_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:

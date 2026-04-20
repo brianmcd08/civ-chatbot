@@ -1,5 +1,5 @@
 import hashlib
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 
 
 @dataclass
@@ -75,34 +75,3 @@ class UnifiedEntry:
         hash_str = self.section + self.version + (self.name or self.description or "")
         hash_obj.update(hash_str.encode("utf-8"))
         return hash_obj.hexdigest()
-
-
-# List of BBG versions
-versions = [
-    "7.4",
-    "7.3",
-    "7.2",
-    "7.1",
-    "6.5",
-    "6.4",
-    "6.3",
-    "6.2",
-    "6.1",
-    "6.0",
-    "5.8",
-    "5.7",
-    "5.6",
-    "base_game",
-]
-
-
-def print_some(entries: list[UnifiedEntry]) -> None:
-    """
-    Preview first 3 and last 3
-    """
-    for e in entries[:3] + entries[-3:]:
-        print(asdict(e))
-
-
-if __name__ == "__main__":
-    print("Run via the orchestrator!")
