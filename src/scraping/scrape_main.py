@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-from config import versions
-from schema import UnifiedEntry
+from src.config import versions
+from src.schema import UnifiedEntry
 
 pages = [
     "misc",

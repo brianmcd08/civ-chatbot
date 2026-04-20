@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-from config import versions
-from schema import UnifiedEntry
+from src.config import versions
+from src.schema import UnifiedEntry
 
 
 def parse_citystates_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
@@ -32,7 +32,7 @@ def parse_citystates_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntr
 
         entries.append(
             UnifiedEntry(
-                section="city-states",
+                section="city_states",
                 version=version,
                 name=item_name,
                 description=item_descr,

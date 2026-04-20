@@ -3,8 +3,8 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from config import versions
-from schema import UnifiedEntry
+from src.config import versions
+from src.schema import UnifiedEntry
 
 
 def get_civ_from_comment(chart) -> str:
@@ -54,7 +54,7 @@ def parse_leader_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
         civ = get_civ_from_comment(item)
         entries.append(
             UnifiedEntry(
-                section="leaders",
+                section="leaders",  # what about bbg_expanded?
                 version=version,
                 name=item_name,
                 description=item_descr,

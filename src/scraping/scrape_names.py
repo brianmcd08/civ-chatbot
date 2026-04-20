@@ -3,8 +3,8 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from config import versions
-from schema import UnifiedEntry
+from src.config import versions
+from src.schema import UnifiedEntry
 
 
 def get_category_from_comment(chart) -> str:

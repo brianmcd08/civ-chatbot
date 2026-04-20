@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-from config import versions
-from schema import UnifiedEntry
+from src.config import versions
+from src.schema import UnifiedEntry
 
 
 def parse_natural_wonders_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
@@ -37,7 +37,7 @@ def parse_natural_wonders_page(soup: BeautifulSoup, version: str) -> list[Unifie
 
         entries.append(
             UnifiedEntry(
-                section="natural wonder",
+                section="natural_wonder",
                 version=version,
                 name=item_name,
                 description=item_descr,

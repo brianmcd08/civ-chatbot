@@ -23,8 +23,8 @@ def test_scrape_orchestrator():
     }
 
     entries = scrape_orchestrator.run_all()
-
-    # {'tech_tree', 'misc', 'world_wonder', 'policies', 'leaders', 'great_people', 'religion', 'natural wonder', 'governors', 'changelog', 'city-states', 'names'}
+    # {'bbg_expanded'}
     actual_sections = {entry.section for entry in entries if entry.section is not None}
+    print(expected_sections - actual_sections)
     print(actual_sections)
     assert expected_sections.issubset(actual_sections)
