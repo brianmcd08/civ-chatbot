@@ -1,25 +1,33 @@
 from src.schema import UnifiedEntry
 from src.scraping.scrape_bbg_expanded import scrape_bbg_expanded
+from src.scraping.scrape_buildings import scrape_buildings
 from src.scraping.scrape_changelogs import scrape_changelog
 from src.scraping.scrape_citystates import scrape_citystates
 from src.scraping.scrape_civic_tree import scrape_civic_tree
+from src.scraping.scrape_congress import scrape_congress
 from src.scraping.scrape_governors import scrape_governors
 from src.scraping.scrape_great_people import scrape_great_people
+from src.scraping.scrape_improvements import scrape_improvements
 from src.scraping.scrape_leaders import scrape_leaders
-from src.scraping.scrape_main import scrape_combined_items
+from src.scraping.scrape_misc import scrape_misc
 from src.scraping.scrape_names import scrape_names
 from src.scraping.scrape_natural_wonders import scrape_natural_wonders
 from src.scraping.scrape_policies import scrape_policies
 from src.scraping.scrape_religion import scrape_religion
 from src.scraping.scrape_tech_tree import scrape_tech_tree
+from src.scraping.scrape_units import scrape_units
 from src.scraping.scrape_world_wonders import scrape_world_wonders
 
 
 def run_all() -> list[UnifiedEntry]:
     entries: list[UnifiedEntry] = []
 
-    entries.extend(scrape_combined_items())
-    print(f"Entries after most: {len(entries)}")
+    entries.extend(scrape_misc())
+    print(f"Entries after misc: {len(entries)}")
+    entries.extend(scrape_buildings())
+    entries.extend(scrape_congress())
+    entries.extend(scrape_units())
+    entries.extend(scrape_improvements())
     entries.extend(scrape_changelog())
     entries.extend(scrape_names())
     entries.extend(scrape_great_people())

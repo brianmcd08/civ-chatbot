@@ -5,10 +5,10 @@ from src.config import versions
 from src.schema import UnifiedEntry
 
 
-def scrape_tech_tree():
+def scrape_units():
     entries: list[UnifiedEntry] = []
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/tech_tree_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/units_{version}.html"
         response = requests.get(url)
         if not response.ok:
             print(f"{url} not found and should be!")
@@ -21,25 +21,25 @@ def scrape_tech_tree():
             lambda tag: (  # type: ignore
                 tag.name == "div"
                 and "chart" in tag.get("class", [])
-                and tag.find("h3", class_="civ-ability-name")
+                and tag.find("h2", class_="civ-name")
                 and tag.find("p", class_="civ-ability-desc")
             )
         )
 
         for item in items:
-            item_name = item.find("h3", class_="civ-ability-name").get_text(
+            item_name = item.find("h2", class_="civ-name").get_text(
                 separator=" ", strip=True
             )
             item_descr = " ".join(
                 [
                     p.get_text(separator=" ", strip=True)
-                    for p in item.find_all(["p", "small"], class_="civ-ability-desc")
+                    for p in item.find_all("p", class_="civ-ability-desc")
                 ]
             )
 
             entries.append(
                 UnifiedEntry(
-                    section="tech_tree",
+                    section="units",
                     version=version,
                     name=item_name,
                     description=item_descr,
@@ -51,5 +51,5 @@ def scrape_tech_tree():
 
 
 if __name__ == "__main__":
-    entries = scrape_tech_tree()
-    print(entries[0])
+    entries = scrape_units()
+    print(entries[-1])

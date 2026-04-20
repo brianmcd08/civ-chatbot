@@ -39,7 +39,7 @@ def scrape_civic_tree():
 
             entries.append(
                 UnifiedEntry(
-                    section="civics",
+                    section="civic_tree",
                     version=version,
                     name=item_name,
                     description=item_descr,
