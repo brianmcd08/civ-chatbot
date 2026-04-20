@@ -1,3 +1,4 @@
+import hashlib
 from dataclasses import asdict, dataclass
 
 
@@ -65,9 +66,15 @@ class UnifiedEntry:
                 "great_person_type": self.great_person_type,
                 "era": self.era,
                 "charges": self.charges,
-            }
+            }.items()
             if v is not None
         }
+
+    def generate_hash(self) -> str:
+        hash_obj = hashlib.sha256()
+        hash_str = self.section + self.version + (self.name or self.description or "")
+        hash_obj.update(hash_str.encode("utf-8"))
+        return hash_obj.hexdigest()
 
 
 # List of BBG versions

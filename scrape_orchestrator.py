@@ -16,20 +16,20 @@ from scraper_utils import UnifiedEntry, versions
 def run_all() -> list[UnifiedEntry]:
     entries: list[UnifiedEntry] = []
 
-    entries.extend(scrape_combined_items())
+    entries[:50].extend(scrape_combined_items())
     print(f"Entries after most: {len(entries)}")
-    entries.extend(scrape_changelog())
-    entries.extend(scrape_names())
-    entries.extend(scrape_great_people())
-    entries.extend(scrape_leaders("leaders", versions))
-    entries.extend(scrape_leaders("bbg_expanded", versions[:4]))
-    entries.extend(scrape_policies())
-    entries.extend(scrape_tech_and_civics())
-    entries.extend(scrape_natural_wonders())
+    entries.extend(scrape_changelog()[:20])
+    entries.extend(scrape_names()[:20])
+    entries.extend(scrape_great_people()[:20])
+    entries.extend(scrape_leaders("leaders", versions)[:20])
+    entries.extend(scrape_leaders("bbg_expanded", versions[:4])[:20])
+    entries.extend(scrape_policies()[:20])
+    entries.extend(scrape_tech_and_civics()[:20])
+    entries.extend(scrape_natural_wonders()[:20])
     entries.extend(scrape_world_wonders())
-    entries.extend(scrape_religion())
-    entries.extend(scrape_citystates())
-    entries.extend(scrape_governors())
+    entries.extend(scrape_religion()[:20])
+    entries.extend(scrape_citystates()[:20])
+    entries.extend(scrape_governors()[:20])
     print(f"Entries after everything: {len(entries)}")
 
     return entries
