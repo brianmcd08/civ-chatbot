@@ -5,7 +5,7 @@ from src.config import versions
 from src.schema import UnifiedEntry
 
 
-def parse_natural_wonders_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
     Extract leaders.
     """
@@ -62,7 +62,7 @@ def scrape_natural_wonders():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_natural_wonders_page(soup, version=version)
+        page_entries = parse_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")

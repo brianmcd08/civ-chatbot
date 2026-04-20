@@ -5,7 +5,7 @@ from src.config import versions
 from src.schema import UnifiedEntry
 
 
-def parse_great_people_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
     Walk all div.row elements in order, tracking the current great person type
     and era, then collect individuals from non-header rows beneath them.
@@ -89,7 +89,7 @@ def scrape_great_people():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_great_people_page(soup, version=version)
+        page_entries = parse_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")

@@ -21,7 +21,7 @@ def get_category_from_comment(chart) -> str:
     return ""
 
 
-def parse_names_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
+def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     entries: list[UnifiedEntry] = []
 
     for chart in soup.find_all("div", class_="chart"):
@@ -62,7 +62,7 @@ def scrape_names():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        page_entries = parse_names_page(soup, version=version)
+        page_entries = parse_page(soup, version=version)
         all_entries.extend(page_entries)
 
     print(f"\nTotal entries collected: {len(all_entries)}")

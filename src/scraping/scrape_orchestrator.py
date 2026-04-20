@@ -1,5 +1,5 @@
-from src.config import versions
 from src.schema import UnifiedEntry
+from src.scraping.scrape_bbg_expanded import scrape_bbg_expanded
 from src.scraping.scrape_changelogs import scrape_changelog
 from src.scraping.scrape_citystates import scrape_citystates
 from src.scraping.scrape_civic_tree import scrape_civic_tree
@@ -23,9 +23,8 @@ def run_all() -> list[UnifiedEntry]:
     entries.extend(scrape_changelog())
     entries.extend(scrape_names())
     entries.extend(scrape_great_people())
-    entries.extend(scrape_leaders("leaders", versions))
+    entries.extend(scrape_leaders())
     entries.extend(scrape_bbg_expanded())
-    # entries.extend(scrape_leaders("bbg_expanded", versions[:4]))
     entries.extend(scrape_policies())
     entries.extend(scrape_tech_tree())
     entries.extend(scrape_civic_tree())
