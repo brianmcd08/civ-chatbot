@@ -54,7 +54,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
         civ = get_civ_from_comment(item)
         entries.append(
             UnifiedEntry(
-                section="leaders",  # what about bbg_expanded?
+                section="bbg_expanded",  # what about bbg_expanded?
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -66,11 +66,11 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     return entries
 
 
-def scrape_leaders() -> list[UnifiedEntry]:
+def scrape_bbg_expanded() -> list[UnifiedEntry]:
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/leaders_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/bbg_expanded_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
@@ -88,5 +88,5 @@ def scrape_leaders() -> list[UnifiedEntry]:
 
 
 if __name__ == "__main__":
-    entries = scrape_leaders()
+    entries = scrape_bbg_expanded()
     print(entries[0])
