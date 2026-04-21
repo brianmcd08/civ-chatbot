@@ -62,7 +62,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     return entries
 
 
-def scrape_world_wonders():
+def scrape_world_wonder():
     all_entries: list[UnifiedEntry] = []
 
     for version in Version:
@@ -84,5 +84,5 @@ def scrape_world_wonders():
 
 
 if __name__ == "__main__":
-    entries = scrape_world_wonders()
+    entries = scrape_world_wonder()
     print(entries[0])

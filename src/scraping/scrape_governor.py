@@ -7,7 +7,7 @@ from src.schema import UnifiedEntry
 
 def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     """
-    Extract city-states.
+    Extract governors.
     """
 
     entries: list[UnifiedEntry] = []
@@ -17,6 +17,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
             tag.name == "div"
             and "chart" in tag.get("class", [])
             and tag.find("h2", class_="civ-name")
+            and tag.find("h3", class_="civ-ability-name")
             and tag.find("p", class_="civ-ability-desc")
         )
     )
@@ -26,13 +27,25 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
             separator=" ", strip=True
         )
 
-        item_descr = item.find("p", class_="civ-ability-desc actual-text").get_text(
-            separator=" ", strip=True
+        item_descr1 = " ".join(
+            [
+                p.get_text(separator=" ", strip=True)
+                for p in item.find_all(["h3"], class_="civ-ability-name")
+            ]
         )
+
+        item_descr2 = " ".join(
+            [
+                p.get_text(separator=" ", strip=True)
+                for p in item.find_all(["p"], class_="civ-ability-desc")
+            ]
+        )
+
+        item_descr = f"{item_descr1} {item_descr2}"
 
         entries.append(
             UnifiedEntry(
-                section=Section.CITYSTATES,
+                section=Section.GOVERNORS,
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -43,11 +56,11 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
     return entries
 
 
-def scrape_citystates():
+def scrape_governor():
     all_entries: list[UnifiedEntry] = []
 
     for version in Version:
-        url = f"https://civ6bbg.github.io/en_US/{Section.CITYSTATES}_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.GOVERNORS}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
@@ -65,5 +78,5 @@ def scrape_citystates():
 
 
 if __name__ == "__main__":
-    entries = scrape_citystates()
-    print(entries[0])
+    entries = scrape_governor()
+    print(entries[-1])

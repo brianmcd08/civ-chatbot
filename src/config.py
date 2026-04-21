@@ -35,9 +35,17 @@ class Version(StrEnum):
     V56 = "5.6"
     VBASE = "base_game"
 
+    @classmethod
+    def to_list_of_strings(cls):
+        return "\n".join([v.value for v in cls])
+
+    @classmethod
+    def get_latest_version(cls):
+        return next(iter(cls))
+
 
 # latest_version = versions[0]
-latest_version = Version.V74
+# latest_version = Version.V74
 
 
 # Sections

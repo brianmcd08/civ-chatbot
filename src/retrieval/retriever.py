@@ -5,7 +5,7 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 
-from src.config import latest_version
+from src.config import Version
 
 
 class CivRetriever:
@@ -16,7 +16,9 @@ class CivRetriever:
             persist_directory="./chroma_langchain_db",
         )
 
-    def retrieve(self, query: str, version: str = latest_version) -> list[Document]:
+    def retrieve(
+        self, query: str, version: str = Version.get_latest_version()
+    ) -> list[Document]:
         result = self.vector_store.similarity_search(
             query, filter={"bbg_version": version}
         )

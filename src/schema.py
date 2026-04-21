@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from pydantic import BaseModel, Field
 
-from src.config import Section, Version, latest_version
+from src.config import Section, Version
 
 
 class ParsedInput(BaseModel):
@@ -18,7 +18,7 @@ class ParsedInput(BaseModel):
     )
     version: Version = Field(
         description="Extracted version from the query",
-        default=latest_version,
+        default=Version.get_latest_version(),
     )
 
 
