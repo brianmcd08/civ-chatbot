@@ -3,10 +3,10 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from src.config import Section, versions
+from src.config import Section, Version
 from src.schema import UnifiedEntry
 
-versions = versions[:4]
+versions = list(Version)[:4]
 
 
 def get_civ_from_comment(chart) -> str:

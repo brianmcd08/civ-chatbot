@@ -1,13 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import Section, versions
+from src.config import Section, Version
 from src.schema import UnifiedEntry
 
 
 def scrape_civic_tree():
     entries: list[UnifiedEntry] = []
-    for version in versions:
+    for version in Version:
         url = f"https://civ6bbg.github.io/en_US/{Section.CIVICTREE}_{version}.html"
         response = requests.get(url)
         if not response.ok:

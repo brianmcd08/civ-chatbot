@@ -1,7 +1,25 @@
 import hashlib
 from dataclasses import dataclass
 
-from src.config import Section
+from pydantic import BaseModel, Field
+
+from src.config import Section, Version, latest_version
+
+
+class ParsedInput(BaseModel):
+    """
+    Cleaned data after raw input from user
+    """
+
+    cleaned_query: str = Field(
+        description="User query after typos, fillers removed",
+        min_length=5,
+        max_length=128,
+    )
+    version: Version = Field(
+        description="Extracted version from the query",
+        default=latest_version,
+    )
 
 
 @dataclass

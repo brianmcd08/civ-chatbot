@@ -3,7 +3,7 @@ from typing import cast
 import requests
 from bs4 import BeautifulSoup, Tag
 
-from src.config import Section, versions
+from src.config import Section, Version
 from src.schema import UnifiedEntry
 
 
@@ -48,7 +48,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
 
 
 def scrape_changelog():
-    changelog_versions = versions[:10]
+    changelog_versions = list(Version)[:10]
 
     all_entries: list[UnifiedEntry] = []
 

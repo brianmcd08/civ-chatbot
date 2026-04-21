@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import Section, versions
+from src.config import Section, Version
 from src.schema import UnifiedEntry
 
 
@@ -51,7 +51,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
 def scrape_natural_wonders():
     all_entries: list[UnifiedEntry] = []
 
-    for version in versions:
+    for version in Version:
         url = f"https://civ6bbg.github.io/en_US/{Section.NATURALWONDER}_{version}.html"
         response = requests.get(url)
 
