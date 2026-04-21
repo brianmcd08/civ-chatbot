@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
 def scrape_congress():
     entries: list[UnifiedEntry] = []
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/congress_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.CONGRESS}_{version}.html"
         response = requests.get(url)
         if not response.ok:
             print(f"{url} not found and should be!")
@@ -39,7 +39,7 @@ def scrape_congress():
 
             entries.append(
                 UnifiedEntry(
-                    section="congress",
+                    section=Section.CONGRESS,
                     version=version,
                     name=item_name,
                     description=item_descr,

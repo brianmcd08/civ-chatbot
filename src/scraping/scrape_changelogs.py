@@ -3,7 +3,7 @@ from typing import cast
 import requests
 from bs4 import BeautifulSoup, Tag
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
@@ -36,7 +36,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
                 if description:
                     entries.append(
                         UnifiedEntry(
-                            section="changelog",
+                            section=Section.CHANGELOG,
                             version=version,
                             category=current_category,
                             subcategory=current_subcategory,
@@ -53,7 +53,7 @@ def scrape_changelog():
     all_entries: list[UnifiedEntry] = []
 
     for version in changelog_versions:
-        url = f"https://civ6bbg.github.io/en_US/changelog_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.CHANGELOG}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:

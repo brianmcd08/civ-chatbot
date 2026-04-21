@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
@@ -32,7 +32,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
 
         entries.append(
             UnifiedEntry(
-                section="city_states",
+                section=Section.CITYSTATES,
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -47,7 +47,7 @@ def scrape_citystates():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/city_states_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.CITYSTATES}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:

@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
 def scrape_improvements():
     entries: list[UnifiedEntry] = []
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/improvements_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.IMPROVEMENTS}_{version}.html"
         response = requests.get(url)
         if not response.ok:
             print(f"{url} not found and should be!")
@@ -39,7 +39,7 @@ def scrape_improvements():
 
             entries.append(
                 UnifiedEntry(
-                    section="improvements",
+                    section=Section.IMPROVEMENTS,
                     version=version,
                     name=item_name,
                     description=item_descr,

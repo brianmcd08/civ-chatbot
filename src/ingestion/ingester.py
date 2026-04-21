@@ -3,7 +3,7 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
 import src.scraping.scrape_orchestrator as scrape_orchestrator
-from schema import UnifiedEntry
+from src.schema import UnifiedEntry
 
 load_dotenv()
 

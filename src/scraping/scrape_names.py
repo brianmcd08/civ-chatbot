@@ -3,7 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
@@ -37,7 +37,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
 
         entries.append(
             UnifiedEntry(
-                section="names",
+                section=Section.NAMES,
                 version=version,
                 category=category,
                 name=name,
@@ -52,7 +52,7 @@ def scrape_names():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/names_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.NAMES}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:

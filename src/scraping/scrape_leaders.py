@@ -3,7 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
@@ -54,7 +54,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
         civ = get_civ_from_comment(item)
         entries.append(
             UnifiedEntry(
-                section="leaders",  # what about bbg_expanded?
+                section=Section.LEADERS,  # what about bbg_expanded?
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -70,7 +70,7 @@ def scrape_leaders() -> list[UnifiedEntry]:
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/leaders_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.LEADERS}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:

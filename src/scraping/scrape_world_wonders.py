@@ -3,7 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup, Comment
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
@@ -51,7 +51,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
 
             entries.append(
                 UnifiedEntry(
-                    section="world_wonder",
+                    section=Section.WORLDWONDER,
                     version=version,
                     name=name,
                     era=current_era,
@@ -68,7 +68,7 @@ def scrape_world_wonders():
     all_entries: list[UnifiedEntry] = []
 
     for version in changelog_versions:
-        url = f"https://civ6bbg.github.io/en_US/world_wonder_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.WORLDWONDER}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:

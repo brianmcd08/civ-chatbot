@@ -1,6 +1,8 @@
 import hashlib
 from dataclasses import dataclass
 
+from src.config import Section
+
 
 @dataclass
 class UnifiedEntry:
@@ -8,7 +10,7 @@ class UnifiedEntry:
     For storing data from all ingestion runs
     """
 
-    section: str  # page name
+    section: Section  # page name
     version: str  # bbg version
 
     name: str | None = (

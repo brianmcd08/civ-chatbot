@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import versions
+from src.config import Section, versions
 from src.schema import UnifiedEntry
 
 
@@ -32,7 +32,7 @@ def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
 
         entries.append(
             UnifiedEntry(
-                section="religion",
+                section=Section.RELIGION,
                 version=version,
                 name=item_name,
                 description=item_descr,
@@ -47,7 +47,7 @@ def scrape_religion():
     all_entries: list[UnifiedEntry] = []
 
     for version in versions:
-        url = f"https://civ6bbg.github.io/en_US/religion_{version}.html"
+        url = f"https://civ6bbg.github.io/en_US/{Section.RELIGION}_{version}.html"
         response = requests.get(url)
 
         if not response.ok:
