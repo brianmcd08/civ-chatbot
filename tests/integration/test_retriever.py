@@ -1,13 +1,12 @@
-from src.retrieval.retriever import CivRetriever
+from src.retrieval.retriever import vectorstore_connection
 
 
 def test_version_retrieved():
     expected_version = "7.4"
     query = "Which Great General gives you the Art of War?"
     expected_answer = "Sun Tzu"
-    retriever = CivRetriever()
 
-    results = retriever.retrieve(query=query, version=expected_version)
+    results = vectorstore_connection.retrieve(query=query, version=expected_version)
     assert results
 
     for doc in results:

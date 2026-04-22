@@ -8,7 +8,7 @@ from langchain_openai import OpenAIEmbeddings
 from src.config import Version
 
 
-class CivRetriever:
+class Retriever:
     def __init__(self) -> None:
         self.vector_store = Chroma(
             collection_name="civilization6_collection",
@@ -24,3 +24,6 @@ class CivRetriever:
         )
 
         return result
+
+
+vectorstore_connection = Retriever()
