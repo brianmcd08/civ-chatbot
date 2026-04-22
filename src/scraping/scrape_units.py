@@ -17,32 +17,24 @@ def scrape_units():
         print(f"Parsing {url}")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        items = soup.find_all(
-            lambda tag: (  # type: ignore
-                tag.name == "div"
-                and "chart" in tag.get("class", [])
-                and tag.find("h2", class_="civ-name")
-                and tag.find("p", class_="civ-ability-desc")
-            )
-        )
+        # Replace the items loop in both scrape_misc and scrape_units with this:
+        seen: dict[str, list[str]] = {}  # name -> list of description parts
 
-        for item in items:
-            item_name = item.find("h2", class_="civ-name").get_text(
-                separator=" ", strip=True
-            )
-            item_descr = " ".join(
-                [
-                    p.get_text(separator=" ", strip=True)
-                    for p in item.find_all("p", class_="civ-ability-desc")
-                ]
-            )
+        for item in soup.find_all("div", class_="chart"):
+            h2 = item.find("h2", class_="civ-name")
+            if not h2:
+                continue
+            name = h2.get_text(separator=" ", strip=True)
+            for p in item.find_all("p", class_="civ-ability-desc"):
+                seen.setdefault(name, []).append(p.get_text(separator=" ", strip=True))
 
+        for name, parts in seen.items():
             entries.append(
                 UnifiedEntry(
-                    section=Section.UNITS,
+                    section=Section.UNITS,  # Section.UNITS for scrape_units
                     version=version,
-                    name=item_name,
-                    description=item_descr,
+                    name=name,
+                    description=" ".join(parts),
                 )
             )
 

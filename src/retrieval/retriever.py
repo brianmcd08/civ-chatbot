@@ -17,11 +17,15 @@ class Retriever:
         )
 
     def retrieve(
-        self, query: str, version: str = Version.get_latest_version()
+        self, query: str, version: str | None = Version.get_latest_version()
     ) -> list[Document]:
-        result = self.vector_store.similarity_search(
-            query, filter={"bbg_version": version}
-        )
+        filter = {"bbg_version": version} if version else None
+        result = self.vector_store.similarity_search(query, filter=filter)
+
+        # Fallback: if a version-filtered search returns nothing, retry without
+        # the filter so base_game or cross-version documents can still be found.
+        if not result and filter is not None:
+            result = self.vector_store.similarity_search(query)
 
         return result
 

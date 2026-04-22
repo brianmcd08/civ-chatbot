@@ -22,30 +22,36 @@ def get_category_from_comment(chart) -> str:
 
 
 def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
-    entries: list[UnifiedEntry] = []
+
+    name_to_data: dict[str, dict] = {}  # name -> {category, civs}
 
     for chart in soup.find_all("div", class_="chart"):
         h2 = chart.find("h2", class_="civ-ability-desc")
-        p = chart.find("p", class_="civ-ability-desc")
-
-        if not h2 or not p:
+        if not h2:
             continue
 
         name = h2.get_text(separator=" ", strip=True)
-        civilization = p.get_text(separator=" ", strip=True)
         category = get_category_from_comment(chart)
+        civs = [
+            p.get_text(separator=" ", strip=True)
+            for p in chart.find_all("p", class_="civ-ability-desc")
+        ]
 
-        entries.append(
-            UnifiedEntry(
-                section=Section.NAMES,
-                version=version,
-                category=category,
-                name=name,
-                civilization=civilization,
-            )
+        if name not in name_to_data:
+            name_to_data[name] = {"category": category, "civs": civs}
+        else:
+            name_to_data[name]["civs"].extend(civs)  # merge civs from second occurrence
+
+    return [
+        UnifiedEntry(
+            section=Section.NAMES,
+            version=version,
+            category=data["category"],
+            name=name,
+            civilization=", ".join(data["civs"]) or None,
         )
-
-    return entries
+        for name, data in name_to_data.items()
+    ]
 
 
 def scrape_names():

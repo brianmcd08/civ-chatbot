@@ -1,7 +1,7 @@
 import hashlib
 from dataclasses import dataclass
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from src.config import Section, Version
 
@@ -16,10 +16,18 @@ class ParsedInput(BaseModel):
         min_length=5,
         max_length=128,
     )
-    version: Version = Field(
+
+    version: Version | None = Field(
         description="Extracted version from the query",
         default=Version.get_latest_version(),
     )
+
+    @field_validator("version", mode="before")
+    @classmethod
+    def parse_null(cls, v):
+        if v == "null" or v == "none" or v == "None":
+            return None
+        return v
 
 
 @dataclass
