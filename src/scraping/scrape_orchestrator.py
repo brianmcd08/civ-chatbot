@@ -21,30 +21,6 @@ from src.scraping.scrape_tech_tree import scrape_tech_tree  # noqa: F401
 from src.scraping.scrape_units import scrape_units  # noqa: F401
 from src.scraping.scrape_world_wonder import scrape_world_wonder  # noqa: F401
 
-# def run_all() -> list[UnifiedEntry]:
-#     entries: list[UnifiedEntry] = []
-
-#     entries.extend(scrape_misc())
-#     entries.extend(scrape_buildings())
-#     entries.extend(scrape_congress())
-#     entries.extend(scrape_units())
-#     entries.extend(scrape_improvements())
-#     entries.extend(scrape_changelog())
-#     entries.extend(scrape_names())
-#     entries.extend(scrape_great_people())
-#     entries.extend(scrape_leaders())
-#     entries.extend(scrape_bbg_expanded())
-#     entries.extend(scrape_policies())
-#     entries.extend(scrape_tech_tree())
-#     entries.extend(scrape_civic_tree())
-#     entries.extend(scrape_natural_wonders())
-#     entries.extend(scrape_world_wonders())
-#     entries.extend(scrape_religion())
-#     entries.extend(scrape_citystates())
-#     entries.extend(scrape_governors())
-
-#     return entries
-
 
 def run_all() -> list[UnifiedEntry]:
     entries: list[UnifiedEntry] = []
