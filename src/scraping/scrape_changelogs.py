@@ -8,41 +8,70 @@ from src.schema import UnifiedEntry
 
 
 def parse_page(soup: BeautifulSoup, version: str) -> list[UnifiedEntry]:
-    entries: list[UnifiedEntry] = []
+    """
+    Parse a changelog page into one UnifiedEntry per category group.
 
-    # All content lives inside div.chart blocks within the container
+    Previously this created one entry per <p> bullet point, which produced
+    ~50-60 tiny chunks per version (median ~100 chars) with no surrounding
+    context. Grouping by category means "Military Units v7.4" becomes a single
+    chunk with all 17 bullet points joined — enough content for the embedding
+    model to reliably retrieve it for any unit-related query.
+
+    Subcategory is retained as metadata for the LLM but NOT used as a grouping
+    key, because splitting "Military Units / Melee" and "Military Units / Ranged"
+    into separate chunks would recreate the fragmentation problem.
+    """
+
+    # (category) -> list of (subcategory, bullet_text) tuples
+    # We preserve subcategory in the text so the LLM can see it, but we group
+    # only by category so related changes land in the same chunk.
+    groups: dict[str, list[tuple[str, str]]] = {}
+
+    current_category = ""
+    current_subcategory = ""
+
     for chart in soup.find_all("div", class_="chart"):
-        current_category = ""
-        current_subcategory = ""
-
         for tag in chart.children:
             if not isinstance(tag, Tag):
-                continue  # skip NavigableString / Comment nodes
+                continue
 
             classes = cast(list[str], tag.get("class") or [])
 
-            # Top-level category header (h1)
             if tag.name == "h1" and "civ-name" in classes:
                 current_category = tag.get_text(separator=" ", strip=True)
                 current_subcategory = ""
 
-            # Subcategory header (h2)
             elif tag.name == "h2" and "civ-name" in classes:
                 current_subcategory = tag.get_text(separator=" ", strip=True)
 
-            # Content paragraph
             elif tag.name == "p" and "civ-ability-desc" in classes:
                 description = tag.get_text(separator=" ", strip=True)
                 if description:
-                    entries.append(
-                        UnifiedEntry(
-                            section=Section.CHANGELOG,
-                            version=version,
-                            category=current_category,
-                            subcategory=current_subcategory,
-                            description=description,
-                        )
+                    groups.setdefault(current_category, []).append(
+                        (current_subcategory, description)
                     )
+
+    entries: list[UnifiedEntry] = []
+    for category, bullets in groups.items():
+        # Inline the subcategory header when it changes, so the joined text
+        # reads naturally: "[Combat] bullet1 bullet2 [Recon] bullet3 ..."
+        # This keeps subcategory context visible to the LLM without fragmenting.
+        parts: list[str] = []
+        last_sub = None
+        for subcategory, text in bullets:
+            if subcategory and subcategory != last_sub:
+                parts.append(f"[{subcategory}]")
+                last_sub = subcategory
+            parts.append(text)
+
+        entries.append(
+            UnifiedEntry(
+                section=Section.CHANGELOG,
+                version=version,
+                category=category or None,
+                description=" ".join(parts),
+            )
+        )
 
     return entries
 
