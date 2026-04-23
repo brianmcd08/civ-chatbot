@@ -3,7 +3,7 @@ from typing import cast
 
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from src.config import Section, Version
 from src.schema import ParsedInput
@@ -11,7 +11,7 @@ from src.schema import ParsedInput
 load_dotenv()
 
 
-def version_extractor(query: str) -> ParsedInput:
+def version_extractor(query: str, history: list) -> ParsedInput:
     """
     1) Extract version from query by passing Version to LLM
     2) Clean query by passing to LLM
@@ -75,10 +75,11 @@ def version_extractor(query: str) -> ParsedInput:
     cpt = ChatPromptTemplate.from_messages(
         [
             ("system", prompt),
+            MessagesPlaceholder("history"),
             ("human", "{query}"),
         ]
     )
 
     chain = cpt | structured_llm
-    response = cast(ParsedInput, chain.invoke({"query": query}))
+    response = cast(ParsedInput, chain.invoke({"query": query, "history": history}))
     return response

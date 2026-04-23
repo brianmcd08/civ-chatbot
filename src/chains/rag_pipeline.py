@@ -5,7 +5,7 @@ from src.retrieval.retriever import vectorstore_connection
 from src.schema import ParsedInput
 
 
-def rag_pipeline(query: str) -> list[Document]:
+def rag_pipeline(query: str, history: list) -> list[Document]:
     """
     Chain that ties everything together — takes a raw user query,
     runs it through the version extractor, then passes the ParsedInput
@@ -16,7 +16,8 @@ def rag_pipeline(query: str) -> list[Document]:
     section instead of searching all 32k docs unfiltered.
     """
 
-    extracted_values: ParsedInput = ve.version_extractor(query)
+    recent_history = history[-4:]
+    extracted_values: ParsedInput = ve.version_extractor(query, recent_history)
 
     # Uncomment to debug version/section extraction during development:
     # print(f"DEBUG → cleaned='{extracted_values.cleaned_query}', "

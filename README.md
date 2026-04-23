@@ -146,5 +146,4 @@ pytest
 ## Limitations
 
 - **Base game reference data** (promotion trees, vanilla unit stats) is not included — the chatbot covers BBG balance changes only. For base game lookups, refer to the [Civilization Wiki](https://civilization.fandom.com/wiki/Civilization_VI).
-- The chatbot has no conversation memory between sessions. Within a session, message history is maintained via Streamlit session state but is not passed to the retrieval or generation steps.
 - The Chroma database is local only. There is no hosted version of this chatbot.

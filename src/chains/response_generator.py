@@ -2,15 +2,16 @@ import os
 
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
+from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from src.chains.rag_pipeline import rag_pipeline
 
 load_dotenv()
 
 
-def generate_response(query: str) -> str:
+def generate_response(query: str, history: list) -> str:
     """
     The entire pipeline
 
@@ -21,8 +22,15 @@ def generate_response(query: str) -> str:
         str: llm output
     """
 
+    converted_history = []
+    for msg in history:
+        if msg["role"] == "user":
+            converted_history.append(HumanMessage(content=msg["content"]))
+        else:
+            converted_history.append(AIMessage(content=msg["content"]))
+
     llm = ChatAnthropic(model_name=os.environ["ANTHROPIC_MODEL"], stop=[], timeout=30)
-    result = rag_pipeline(query)
+    result = rag_pipeline(query, converted_history)
 
     if not result:
         response = "Sorry I need more information."
@@ -47,11 +55,12 @@ def generate_response(query: str) -> str:
         cpt = ChatPromptTemplate.from_messages(
             [
                 ("system", prompt),
+                MessagesPlaceholder("history"),
                 ("human", "{query}"),
             ]
         )
 
         chain = cpt | llm | StrOutputParser()
-        response = chain.invoke({"query": query})
+        response = chain.invoke({"query": query, "history": history})
 
     return response

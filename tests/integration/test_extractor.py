@@ -6,7 +6,7 @@ def test_extractor_no_version_specified():
     expected_version = "7.4"
 
     query = "Whech Great Gneral gives you the Art of War?"
-    results = version_extractor(query)
+    results = version_extractor(query, [])
 
     assert isinstance(results, ParsedInput)
     assert results.version == expected_version
@@ -17,7 +17,7 @@ def test_extractor_version_specified():
     expected_version = "7.2"
 
     query = "Whech Great Gneral gives you the Art of War in 7.2?"
-    results = version_extractor(query)
+    results = version_extractor(query, [])
 
     assert isinstance(results, ParsedInput)
     assert results.version == expected_version
@@ -28,7 +28,7 @@ def test_extractor_version_oddly_specified():
     expected_version = "7.2"
 
     query = "Which Great Gneral gives you the Art frl War in seven.two?"
-    results = version_extractor(query)
+    results = version_extractor(query, [])
 
     assert isinstance(results, ParsedInput)
     assert results.version == expected_version

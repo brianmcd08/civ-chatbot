@@ -19,6 +19,9 @@ if prompt := st.chat_input("You got a question for Monte?"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        answer = generate_response(prompt)
+        prior_messages = st.session_state.messages[:-1]
+        answer = generate_response(prompt, prior_messages)
+
+        # answer = generate_response(prompt)
         st.session_state.messages.append({"role": "assistant", "content": answer})
         st.markdown(answer)

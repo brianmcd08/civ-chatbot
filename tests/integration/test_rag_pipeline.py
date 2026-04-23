@@ -8,7 +8,7 @@ def test_rag_pipeline_no_version_specified():
     expected_answer = "Sun Tzu"
 
     query = "Whech Great Gneral gives you the Art of War?"
-    results = rag_pipeline(query)
+    results = rag_pipeline(query, [])
 
     assert len(results) >= 1
     for doc in results:
@@ -23,7 +23,7 @@ def test_rag_pipeline_version_specified():
     expected_answer = "Sun Tzu"
 
     query = "Whech Great Gneral gives you the Art of War in 7.2?"
-    results = rag_pipeline(query)
+    results = rag_pipeline(query, [])
 
     assert len(results) >= 1
     for doc in results:
@@ -38,7 +38,7 @@ def test_rag_pipeline_version_oddly_specified():
     expected_answer = "Sun Tzu"
 
     query = "Which Great Gneral gives you the Art frl War in seven.two?"
-    results = rag_pipeline(query)
+    results = rag_pipeline(query, [])
 
     assert len(results) >= 1
     for doc in results:
