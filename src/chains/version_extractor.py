@@ -27,6 +27,7 @@ def version_extractor(query: str, history: list) -> ParsedInput:
     llm = ChatAnthropic(model_name=os.environ["ANTHROPIC_MODEL"], stop=[], timeout=30)
     structured_llm = llm.with_structured_output(ParsedInput)
     versions = Version.to_list_of_strings()
+    latest_version = Version.get_latest_version()
     sections = "\n".join([s.value for s in Section])
 
     prompt = f"""
@@ -35,9 +36,10 @@ def version_extractor(query: str, history: list) -> ParsedInput:
         1) VERSION
         Here are the valid versions:
         <Versions>
-    {versions}
+        {versions}
         </Versions>
-        - Default to v74 if the user doesn't specify a version.
+        - Default to {latest_version} if the user doesn't specify a version.
+        - "latest version", "most recent version", "current version" should be treated as {latest_version}.
         - If the query is asking WHICH versions something appears in, or spans
           all versions (e.g. "which versions is X in?", "has X changed across versions?",
           "when was X added?"), set version to null instead of defaulting to v74.
