@@ -1,5 +1,4 @@
-1) Immortal stats (multi-field stat block)
-What are stats for the Immortal?
+1) What are the stats for the Immortal?
 Production Cost: 50
 Maintenance Cost: 2 per turn
 Movement: 2 points
@@ -11,59 +10,58 @@ Line of Sight: 2
 2) Which wonder gives a Great Prophet?
 Stonehenge
 
-3) Which civ has the ice hockey rink
+3) Which civ has the ice hockey rink?
 Canada
 
-4) Which religious unit heals others
+4) Which religious unit heals others?
 Guru
 
-5) Which governor has Black Marketeer
+5) Which governor has Black Marketeer?
 Magnus
 
-6) Boost for the Wheel technology
+6) What is the boost for the Wheel technology?
 Mine a resource
 
-7) — Name the Mayan leaders (short list)
+7) Name the Mayan leaders.
 Te'K'inich II and Lady Six Sky
 
-8) — Name the cultural city-states (longer list)
+8) Name the cultural city-states.
 Antananarivo, Ayutthaya, Caguana, Kumasi, Mohenjo-Daro, Nan Madol, Rapa Nui, Vilnius
 
-9) — All leaders for China (medium list)
+9) Name all leaders for China.
 Kublai Khan, Qin (Mandate of Heaven), Qin (Unifier), Wu Zetian, Yongle
 
-10) — Which version introduced expanded leader set
+10) Which version introduced expanded leader set?
 7.1
 
-11) — Which wonder is unlocked by Mathematics in 7.4
+11) Which wonder is unlocked by Mathematics in 7.4?
 Petra
 
-12) — What tech does Printing require in 7.4
+12) What tech does Printing require in 7.4?
 Machinery
 
-13) — How did Craftsmanship boost change between 6.4 and 7.1
+13) How did Craftsmanship boost change between 6.4 and 7.1?
 In BBG 6.4, it's immprove 3 tiles. In 7.1 it's improve 2 tiles.
 
-14) — Unique unit for Cree
+14) Name the unique unit for Cree.
 Okihtcitaw
 
-15) — What is the Warak'aq
+15) What is the Warak'aq?
 Recon unit for Inca replacing the skirmisher
 
-16) — Name of the Gallic unique unit
+16) Name the Gallic unique unit.
 Gaesatae
 
-17) — Name a leader from BBG Expanded (any one valid)
+17) Name a leader from BBG Expanded.
 Gaul/Vercingetorix, Macedon/Olympias, Maya/Te'K'inich II, Phoenicia/Ahiram, Swahili/Al-Hasan ibn Sulaiman
 Teotihuacan/Spearthrower Owl, Thule/Kiviuq, Tibet/Trisong Detsen
 
-18) — Who is Alan Turing (Great Person with complex ability)
+18) Who is Alan Turing?
 Great Scientist who Triggers the Eureka for Computers and 1 random technology from the Modern era. If Computers technology is already triggered, instead completes Computers technology.
 
-19) — What does Matterhorn do
+19) What does Matterhorn do?
 Land combat units who move next to the Matterhorn ignore Hills for the rest of the game.
 
-20) — Migration Treaty (two-option answer)
+20) What is the Migration Treaty?
 +20% faster Population growth but -5 Loyalty per turn in this player's cities.
 or +5 Loyalty per turn but -20% Population growth in this player's cities.
-
