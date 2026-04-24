@@ -55,7 +55,11 @@ class Retriever:
         chroma_filter: dict[str, Any]
         k = 25
 
-        if version is not None:
+        if version is not None and section_hint is not None:
+            chroma_filter = {
+                "$and": [{"bbg_version": version}, {"section": section_hint}]
+            }
+        elif version is not None:
             # Version-specific: filter to that version
             chroma_filter = {"bbg_version": version}
         elif section_hint is not None:
