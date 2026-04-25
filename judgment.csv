@@ -5,145 +5,143 @@ id,question,answer,response,faithfulness,relevance,reasoning
  Melee Strength: 36
  Ranged Strength: 25
  Range: 2
- Line of Sight: 2","# Immortal Stats
+ Line of Sight: 2","# The Immortal
 
-Greetings! Here are the specifications for the Immortal, the mighty unit of my Persian allies:
+Greetings! You ask about one of Persia's finest warriors. Here are the stats for the Immortal:
 
-**Production & Maintenance:**
-- Production Cost: 50
-- Maintenance Cost: 2 per turn
+**Production Cost:** 50 (plus 5 additional resource cost)  
+**Maintenance Cost:** 2 Gold per turn  
+**Movement Points:** 2  
+**Melee Strength:** 36  
+**Ranged Strength:** 25  
+**Range:** 2  
+**Line of Sight:** 2  
 
-**Combat Statistics:**
-- Melee Strength: 36
-- Ranged Strength: 25
-- Range: 2
+**Special Abilities:**
+- Unique Persian melee unit that replaces the Swordsman
+- Functions as a melee class unit with a ranged attack (Range 2)
+- Strong defense strength
 
-**Movement & Visibility:**
-- Movement Points: 2
-- Line of Sight: 2
+The Immortal is a formidable warrior, combining solid melee prowess with the ability to strike from range—a potent combination that makes it a valuable asset in any army.",2,3,"The response correctly provides all the stats listed in the ideal answer: Production Cost 50, Maintenance Cost 2 per turn, Movement 2, Melee Strength 36, Ranged Strength 25, Range 2, and Line of Sight 2. However, it adds an unsupported claim of '5 additional resource cost' on top of the production cost, which is not in the ideal answer and appears to be a hallucinated detail. The special abilities section adds extra information not in the ideal answer, but these claims (replacing Swordsman, melee unit with ranged attack) are plausible and not directly contradicted. The main issue is the fabricated '5 additional resource cost.' The response is fully relevant, directly and completely addressing the question about Immortal stats."
+2,Which wonder gives a Great Prophet?,Stonehenge,"According to the information provided, **Stonehenge** grants a free Great Prophet when built.
 
-**Special Characteristics:**
-The Immortal is a Persian unique melee unit that replaces the Swordsman. It is a melee class unit with a ranged attack capability at Range 2, and possesses strong defensive strength compared to the standard Swordsman it replaces.
+Stonehenge is an Ancient Era wonder that costs 90 Production and is unlocked by the Astrology Technology. It also provides +2 Faith and allows Great Prophets to found a Religion on Stonehenge itself instead of requiring a Holy Site. It must be adjacent to Stone and built on flat land.",2,3,"The response correctly identifies Stonehenge as the wonder that gives a Great Prophet, which directly answers the question. However, the response adds several additional claims that may or may not be supported by the source material: the production cost of 90, the Astrology Technology requirement, the +2 Faith bonus, the ability to found a Religion on Stonehenge itself, the adjacency to Stone requirement, and the flat land requirement. Some of these details (like founding religion on Stonehenge itself rather than a Holy Site) seem unusual and potentially fabricated or inaccurate. Since the ideal answer only confirms Stonehenge is correct, and the response adds numerous unsupported/potentially incorrect details, faithfulness is docked to 2. Relevance is 3 since it directly and correctly answers the question asked."
+3,Which religious unit heals others?,Guru,"Based on the information provided, the **Apostle** is the religious unit that heals others.
 
-A formidable warrior indeed! The combination of respectable melee strength with ranged capability makes the Immortal a versatile unit on the battlefield.",2,3,"The response correctly lists all the stats from the ideal answer: Production Cost 50, Maintenance Cost 2 per turn, Movement 2, Melee Strength 36, Ranged Strength 25, Range 2, and Line of Sight 2. However, it adds extra information not found in the ideal answer, such as claiming the Immortal 'replaces the Swordsman,' that it is a 'Persian unique melee unit,' and commentary about its 'strong defensive strength compared to the standard Swordsman.' These additional claims are not supported by the provided ideal answer and could be hallucinated or unsupported by the source material. The response is fully relevant to the question asked, covering all requested stats directly and completely."
-2,Which wonder gives a Great Prophet?,Stonehenge,"**Stonehenge** grants a free Great Prophet when built.
-
-This Ancient Era wonder also has a special feature: Great Prophets may found a Religion on Stonehenge itself instead of requiring a Holy Site. It requires being adjacent to Stone and built on flat land, and is unlocked by the Astrology Technology.",2,3,"The response correctly identifies Stonehenge as the wonder that gives a Great Prophet, which directly answers the question. However, it adds several additional claims that may not be supported by the retrieved context: the claim that 'Great Prophets may found a Religion on Stonehenge itself instead of requiring a Holy Site,' the adjacency requirement to Stone, the flat land requirement, and the Astrology Technology unlock. Some of these details (like adjacency to Stone and Astrology tech) are accurate for Civ 6, but since we only have the ideal answer 'Stonehenge' as context, these additional details go beyond what was provided in the source material and could constitute unsupported claims. The core answer is correct and relevant, but the extra details lower the faithfulness score to a 2."
-3,Which civ has the ice hockey rink?,Canada,"I don't have information about an ice hockey rink building in the data provided to me. The buildings listed in my knowledge base don't include an ice hockey rink, so I'm unable to tell you which civilization has access to it.
-
-If you're looking for information about a specific building in Civilization 6, feel free to ask about any of the buildings I do have data on!",2,1,"The generated response claims it doesn't have information about an ice hockey rink, which is incorrect - the ideal answer clearly states Canada has the ice hockey rink. The response completely fails to answer the question, stating it lacks the data when the correct answer exists. This is both a relevance failure (doesn't answer the question at all) and a faithfulness issue (implies the information doesn't exist when it does)."
-4,Which religious unit heals others?,Guru,"Based on the information provided, the **Apostle** is the religious unit that heals others.
-
-According to the unit data, the Apostle ""operates as a Medic, providing extra healing to units within 1 tile.""
-
-Additionally, there is a **Guru** unit that can heal itself and adjacent friendly religious units by using a charge - it ""may use a charge to heal itself and all adjacent friendly religious units.""",2,2,"The ideal answer is 'Guru,' which is the primary religious unit that heals others. The generated response does mention the Guru and correctly describes its healing ability. However, it leads with the Apostle as the main answer, which is incorrect or at least misleading - the Apostle's medic ability heals military units in adjacent tiles, not specifically 'others' in the way the Guru heals religious units. The response partially addresses the question by including the Guru, but burying the correct answer and leading with an incorrect one reduces both faithfulness and relevance scores."
-5,Which governor has Black Marketeer?,Magnus,"According to the information provided, **Magnus** has the Black Marketeer ability.
+According to the details, the Apostle ""operates as a Medic, providing extra healing to units within 1 tile."" This makes it unique among the religious units (Missionary, Inquisitor, and Guru), as it can heal adjacent friendly units while still maintaining its primary religious conversion abilities.",1,3,"The question asks which religious unit heals others. The ideal answer is 'Guru.' The generated response incorrectly identifies the 'Apostle' as the healing unit, which contradicts the correct answer. While the response is relevant to the topic of religious units and healing, it provides factually incorrect information by attributing the healing ability to the Apostle rather than the Guru. This is a clear factual error/hallucination."
+4,Which governor has Black Marketeer?,Magnus,"According to the information provided, **Magnus** is the governor who has the Black Marketeer ability.
 
 Black Marketeer provides:
 - +2 Production for Workshop
 - +4 Production for Factory
-- +7 Production and +4 Power provided by the city's Coal, Oil, or Nuclear Power Plant",2,3,"The response correctly identifies Magnus as the governor with Black Marketeer, which matches the ideal answer. However, the additional details about what Black Marketeer provides (production bonuses for Workshop, Factory, and Power Plants) are not part of the ideal answer and may be hallucinated or fabricated details not confirmed by the source material. The core answer is correct and relevant, but the extra details introduce potential unsupported claims, dropping faithfulness to 2."
-6,What is the boost for the Wheel technology?,Mine a resource,"# The Wheel Technology Boost
-
-According to the records, the boost for the **Wheel** technology is:
+- +7 Production and +4 Power provided by the city's Coal, Oil, or Nuclear Power Plant",2,3,"The response correctly identifies Magnus as the governor with Black Marketeer, which matches the ideal answer. However, the response adds specific production bonuses (+2 Production for Workshop, +4 Production for Factory, +7 Production and +4 Power for power plants) that are not part of the ideal answer and cannot be verified against provided context. These additional details appear to be fabricated or hallucinated, lowering the faithfulness score. The relevance is high as it directly answers who has Black Marketeer."
+5,What is the boost for the Wheel technology?,Mine a resource,"Greetings! According to the records of our technological achievements, the boost for the **Wheel** technology is:
 
 **Mine a resource**
 
-This is the earliest technology boost in the tree, befitting its foundational nature in human civilization. Once you mine a resource in your territory, you will receive a boost toward completing the Wheel technology.",2,3,"The generated response correctly identifies 'Mine a resource' as the boost for the Wheel technology, which matches the ideal answer. However, it adds unsupported claims such as 'This is the earliest technology boost in the tree' and characterizes it as 'befitting its foundational nature in human civilization,' which are not supported by the source material. These additions constitute minor hallucinations or unsupported claims, reducing faithfulness from a 3 to a 2. The response does directly and completely answer the question asked, earning a relevance score of 3."
-7,Name the Mayan leaders.,Te'K'inich II and Lady Six Sky,"Based on the information provided, the Mayan leaders are:
+This is a practical boost, reflecting how the wheel's utility becomes evident when one begins to extract resources from the earth more efficiently.",3,3,"The generated response correctly identifies 'Mine a resource' as the boost for the Wheel technology, which matches the ideal answer exactly. The additional commentary about the practical connection between mining and the wheel is a minor embellishment but doesn't contradict the source material. The answer directly and completely addresses what was asked."
+6,Name the Mayan leaders.,Te'K'inich II and Lady Six Sky,"Based on the information provided, the Mayan leaders are:
 
 1. **Te' K'inich II**
-2. **Lady Six Sky**",3,3,"The generated response correctly identifies both Mayan leaders: Te' K'inich II and Lady Six Sky, which matches the ideal answer exactly. The slight formatting difference (space in 'Te' K'inich II' vs 'Te'K'inich II') is negligible and does not constitute a factual error. The response directly and completely answers the question asked."
-8,Name the cultural city-states.,"Antananarivo, Ayutthaya, Caguana, Kumasi, Mohenjo-Daro, Nan Madol, Rapa Nui, Vilnius","# Cultural City-States
+2. **Lady Six Sky**",3,3,"The generated response correctly identifies both Mayan leaders: Te' K'inich II and Lady Six Sky, which exactly matches the ideal answer. The slight difference in formatting (space in 'Te' K'inich II' vs 'Te'K'inich II') is negligible and does not constitute a factual error. The response directly and completely answers the question asked."
+7,Name the cultural city-states.,"Antananarivo, Ayutthaya, Caguana, Kumasi, Mohenjo-Daro, Nan Madol, Rapa Nui, Vilnius","# Cultural City-States
 
-Based on the information provided, the following city-states have strong cultural benefits:
+Based on the information provided, the following city-states are primarily focused on Culture:
 
-1. **Kumasi** - Trade Routes provide Culture, plus Culture and Gold for specialty districts
-2. **Nan Madol** - Specialty districts on Coast/Lake tiles provide Culture
-3. **Antananarivo** - Gains Culture based on Great People earned (up to +30%)
-4. **Rapa Nui** - Moai improvements provide Culture with various bonuses
-5. **Caguana** - Batey improvements provide Culture based on adjacent resources and districts
-6. **Ayutthaya** - Gain Culture equal to 15% of Production cost when finishing buildings
-7. **Bologna** - Districts with buildings provide additional Great Person points (which generate Culture)
+1. **Kumasi** - Provides Culture from Trade Routes and specialty districts
+2. **Nan Madol** - Provides Culture from specialty districts on Coast/Lake tiles
+3. **Antananarivo** - Provides Culture based on Great Persons earned
+4. **Rapa Nui** - Provides Culture from Moai improvements
+5. **Caguana** - Provides Culture from Batey improvements
+6. **Ayutthaya** - Provides Culture from finishing buildings
+7. **Bologna** - Provides Great Person points (Culture-generating) from districts with buildings
+8. **Vilnius** - Provides Culture adjacency bonuses to Theater Squares
 
-These city-states are primarily focused on generating Culture as a core benefit, which aligns with your Aztec civilization's strengths in religious and cultural expansion.",2,3,"The response correctly identifies most of the cultural city-states from the ideal answer: Kumasi, Nan Madol, Antananarivo, Rapa Nui, Caguana, and Ayutthaya. However, it misses Mohenjo-Daro and Vilnius, which are listed in the ideal answer. Additionally, it includes Bologna, which is not in the ideal answer's list of cultural city-states. Bologna's inclusion is not supported by the provided ideal answer, making it a hallucinated or unsupported addition. The descriptions of the city-states' bonuses appear reasonable but cannot be fully verified against the ideal answer, which only lists names. The response is highly relevant as it directly addresses the question about cultural city-states, though it's incomplete (missing two) and adds one extra not in the source."
-9,Name all leaders for China.,"Kublai Khan, Qin (Mandate of Heaven), Qin (Unifier), Wu Zetian, Yongle","Based on the information provided, the leaders for China are:
+These city-states all have mechanics that directly enhance Culture generation or Culture-related yields.",2,2,"The generated response correctly identifies 7 of the 8 cultural city-states from the ideal answer (Kumasi, Nan Madol, Antananarivo, Rapa Nui, Caguana, Ayutthaya, Vilnius), but omits Mohenjo-Daro and adds Bologna, which is not in the ideal answer. Bologna is not a cultural city-state according to the ideal answer, making this a hallucination/error. The response is mostly relevant and addresses the question directly, but the inclusion of Bologna and exclusion of Mohenjo-Daro make it incomplete and partially inaccurate."
+8,Name all leaders for China.,"Kublai Khan, Qin (Mandate of Heaven), Qin (Unifier), Wu Zetian, Yongle","# China Leaders
+
+Based on the information provided, the leaders for China are:
 
 1. **Wu Zetian**
-2. **Qin Shi** (appears in two versions):
-   - Qin (Unifier)
-   - Qin (Mandate of Heaven)
-3. **Kublai Khan**
-4. **Yongle**
+2. **Qin Shi (Unifier)**
+3. **Qin Shi (Mandate of Heaven)**
+4. **Kublai Khan**
+5. **Yongle**
 
-So China has **5 leader variants** across 4 distinct historical figures.",3,3,"The generated response correctly lists all five leaders/variants for China: Wu Zetian, Qin (Unifier), Qin (Mandate of Heaven), Kublai Khan, and Yongle. These match exactly with the ideal answer. The response also correctly notes there are 5 leader variants across 4 distinct historical figures, which is accurate. No hallucinated facts or omissions."
-10,Which wonder is unlocked by Mathematics in 7.4?,Petra,"According to the information provided, **Petra** is the wonder unlocked by Mathematics Technology in version 7.4.
+All of these leaders share China's civilization bonuses, including the +45% boost to Eurekas and Inspirations (instead of 40%), and have access to China's unique units and improvements like the Great Wall.",2,3,"The response correctly identifies all five leaders (Wu Zetian, Qin Shi Huang with both agendas/variants, Kublai Khan, and Yongle), matching the ideal answer. However, the leader names are slightly different - the ideal answer uses 'Qin (Mandate of Heaven)' and 'Qin (Unifier)' while the response uses 'Qin Shi (Unifier)' and 'Qin Shi (Mandate of Heaven)'. More importantly, the response adds extra information about civilization bonuses (+45% boost to Eurekas and Inspirations) and unique units/improvements that wasn't part of the question or ideal answer. The +45% boost claim is also potentially inaccurate (it's typically listed as a base +10% extra over the standard 40%, giving 50% total, not 45%). This unsupported/potentially incorrect additional detail reduces the faithfulness score. The relevance is high as it directly addresses all leaders for China."
+9,Which wonder is unlocked by Mathematics in 7.4?,Petra,"Based on the information provided, **Petra** is the wonder unlocked by Mathematics in version 7.4.
 
-Petra is a Classical Era wonder that provides +2 Food, +2 Gold, and +1 Production on all Desert tiles (non-Floodplains) for the city where it's built. It must be built on Desert or Desert Floodplains without Hills and costs 200 production.",2,3,"The generated response correctly identifies Petra as the wonder unlocked by Mathematics in 7.4, which matches the ideal answer. However, the response adds several specific details about Petra's bonuses (+2 Food, +2 Gold, +1 Production on Desert tiles, non-Floodplains), placement requirements (Desert or Desert Floodplains without Hills), and production cost (200 production) that are not part of the ideal answer and cannot be verified against the provided context. These additional claims may or may not be accurate, but since they go beyond what the source material confirms, this constitutes unsupported claims that reduce faithfulness slightly. The relevance is high as it directly answers the question asked."
-11,What tech does Printing require in 7.4?,Machinery,"According to the tech tree in version 7.4, **Printing requires Machinery**.",3,3,"The generated response correctly states that Printing requires Machinery, which exactly matches the ideal answer. No hallucination or unsupported claims are present. The answer directly and completely addresses the question asked."
-12,How did Craftsmanship civic boost change from 6.5 to 7.1?,"In BBG 6.5, it's immprove 3 tiles. In 7.1 it's improve 2 tiles.","# Craftsmanship Civic Boost Change (v6.5 → v7.1)
+Petra provides +2 Food, +2 Gold, and +1 Production on all Desert tiles for the city (non-Floodplains), and must be built on Desert or Desert Floodplains without Hills. It has a production cost of 200.",2,3,"The response correctly identifies Petra as the wonder unlocked by Mathematics, which matches the ideal answer. However, the response adds specific details about Petra's bonuses (+2 Food, +2 Gold, +1 Production on Desert tiles, non-Floodplains) and placement requirements (must be built on Desert or Desert Floodplains without Hills) and production cost (200) that are not verified by the ideal answer. These additional claims may or may not be accurate for version 7.4 specifically, making the faithfulness score a 2 due to unverified supplementary information. The relevance is high as it directly answers the question asked."
+10,What tech does Printing require in 7.4?,Machinery,"According to the tech tree information for version 7.4, **Printing requires Machinery**.",3,3,"The generated response correctly states that Printing requires Machinery, which matches the ideal answer exactly. The response directly addresses the question about what tech Printing requires in version 7.4, with no hallucinated or unsupported claims."
+11,How did Craftsmanship civic boost change from 6.5 to 7.1?,"In BBG 6.5, it's immprove 3 tiles. In 7.1 it's improve 2 tiles.","Based on the information provided, the Craftsmanship civic boost changed as follows:
 
-The boost requirement for the **Craftsmanship** civic changed as follows:
+**Version 6.5:** To Boost: Improve **2 tiles**
 
-- **v6.5**: Improve **3 tiles**
-- **v7.1**: Improve **2 tiles**
+**Version 7.1:** To Boost: Improve **2 tiles**
 
-This represents a **reduction in the boost requirement**, making it easier to boost the Craftsmanship civic in version 7.1 compared to version 6.5.",3,3,"The generated response correctly states that in v6.5 the boost requires improving 3 tiles, and in v7.1 it requires improving 2 tiles, which matches the ideal answer exactly. The additional context about this being a 'reduction in boost requirement' and making it 'easier' is a logical inference that doesn't contradict the source material. The response directly and completely addresses the question asked."
-13,Name the unique unit for Cree.,Okihtcitaw,"The unique unit for the Cree is the **Okihtcitaw**.
+There was **no change** in the Craftsmanship civic boost between versions 6.5 and 7.1. Both versions require improving 2 tiles to boost the civic.",1,2,"The generated response contradicts the ideal answer. According to the ideal answer, in BBG 6.5 the boost required improving 3 tiles, and in 7.1 it changed to 2 tiles. However, the generated response states both versions require 2 tiles and claims there was no change, which is factually incorrect based on the source material. The response does address the right topic (Craftsmanship civic boost comparison between versions), so it is partially relevant, but it gets the key factual detail wrong for version 6.5 and incorrectly concludes no change occurred."
+12,Name the unique unit for Cree.,Okihtcitaw,"The unique unit for Cree is the **Okihtcitaw**.
 
-It is an Ancient era unit that replaces the Scout. The Okihtcitaw starts with a free promotion and gains +5 Combat Strength when fighting units with a higher base Combat Strength.",2,3,"The generated response correctly identifies the Okihtcitaw as the unique unit for the Cree, which matches the ideal answer. However, it adds additional details about the unit (Ancient era, replaces Scout, free promotion, +5 Combat Strength bonus) that are not part of the ideal answer and cannot be verified against the provided source material. These extra details may or may not be accurate, but since they go beyond what the ideal answer confirms, this counts as unsupported claims, lowering faithfulness to 2. Relevance is 3 because the response directly and completely answers the question asked."
-14,What is the Warak'aq?,Recon unit for Inca replacing the skirmisher,"I don't have information about a ""Warak'aq"" in the provided data. 
+It is an Ancient era unit that replaces the Scout. The Okihtcitaw starts with a free promotion and has +5 Combat Strength when fighting units with a higher base Combat Strength.",2,3,"The generated response correctly identifies the Okihtcitaw as the unique unit for the Cree, which matches the ideal answer. However, the response adds additional details (Ancient era, replaces Scout, free promotion, +5 Combat Strength bonus) that are not present in the ideal answer. While these details may be accurate based on game knowledge, they cannot be verified against the provided source material, making this a faithfulness concern. The relevance is high as the response directly and correctly answers the question asked."
+13,What is the Warak'aq?,Recon unit for Inca replacing the skirmisher,"# The Warak'aq
 
-The information I have access to contains geographical feature names from Civilization 6 for various civilizations (Māori, Inca, and Cree), such as rivers, lakes, mountains, volcanoes, and seas. However, ""Warak'aq"" is not listed among these names.
+The Warak'aq is the **Incan unique Medieval Era unit** that replaces the standard Skirmisher. As a leader of the Aztec people, I can tell you about this formidable unit from our neighbors to the south!
 
-If you're asking about something related to Aztec civilization or Montezuma specifically, I should note that I'm roleplaying as Montezuma, but the data provided doesn't contain information about Aztec-specific content—it focuses on Māori, Inca, and Cree civilizations from Civilization 6.
+## Key Characteristics:
 
-Could you provide more context about what you're asking about?",1,1,"The generated response fails entirely to answer the question. The Warak'aq is a recon unit for the Inca civilization that replaces the skirmisher. Instead of providing this information, the response claims it has no data about the Warak'aq and only has information about geographical feature names. This is both unhelpful and incorrect in terms of what was asked. The response does not address the actual question at all, scoring low on both faithfulness (it contradicts the expected answer by claiming ignorance) and relevance (it completely misses the question about what the Warak'aq is)."
-15,Name the Gallic unique unit.,Gaesatae,"The Gallic unique unit is the **Gaesatae**.
+- **Production Cost:** 82
+- **Maintenance Cost:** 2 per turn
+- **Movement:** 3 Movement Points
+- **Combat Strength:** 30 Melee / 40 Ranged
+- **Range:** 1
+- **Line of Sight:** 3
 
-It is an Ancient era unit that replaces the Warrior. It has a production cost of 30, 2 movement points, and 20 melee strength. The Gaesatae receives +10 Combat Strength when fighting units with a higher base Combat Strength, and +5 Combat Strength versus district defenses.",2,3,"The response correctly identifies the Gaesatae as the Gallic unique unit, which matches the ideal answer. However, the response adds additional details (stats, abilities, era, replacement unit) that are not part of the provided source material/ideal answer and cannot be verified for accuracy from the given context. Some of these details may be incorrect (e.g., the Gaesatae typically replaces the Warrior with different stats in some versions). Since extra unverifiable claims are added, faithfulness is docked to 2. Relevance is 3 because the question is directly and completely answered."
-16,Name a leader from BBG Expanded.,"Gaul/Vercingetorix, Macedon/Olympias, Maya/Te'K'inich II, Phoenicia/Ahiram, Swahili/Al-Hasan ibn Sulaiman
+## Special Abilities:
+
+The Warak'aq is notably **stronger at ranged combat than the standard Skirmisher** and gains **+1 additional attack per turn**, making it a more versatile and powerful ranged unit for the Incan civilization during the Medieval Era.",2,3,"The response correctly identifies the Warak'aq as an Incan unit that replaces the Skirmisher, which matches the ideal answer. However, it contains several issues: (1) It adds many specific stats (production cost, maintenance, movement, combat strength, range, line of sight) that are not in the ideal answer and may or may not be accurate - these could be fabricated. (2) The framing 'As a leader of the Aztec people' is a roleplay artifact that is odd and potentially misleading, as the Aztec and Inca are different civilizations. The core identification of it as an Incan unit replacing the Skirmisher is correct, but the additional details are unverified against source material. The response does directly answer what was asked, making it relevant, but the unverified stats and the Aztec framing lower faithfulness."
+14,Name the Gallic unique unit.,Gaesatae,"The Gallic unique unit is the **Gaesatae**.
+
+It is an Ancient era unit that replaces the Warrior, with 20 Melee Strength. It receives +10 Combat Strength when fighting units with a higher base Combat Strength, and +5 Combat Strength versus district defenses.",2,3,"The generated response correctly identifies the Gaesatae as the Gallic unique unit, which matches the ideal answer. However, it adds additional details about the unit's stats and abilities (Ancient era, replaces Warrior, 20 Melee Strength, +10 Combat Strength bonus, +5 Combat Strength versus district defenses) that are not present in the ideal answer. While these details may be accurate based on game data, they cannot be verified against the provided ideal answer, so some risk of unsupported claims exists. The response fully and directly answers the question asked."
+15,Name a leader from BBG Expanded.,"Gaul/Vercingetorix, Macedon/Olympias, Maya/Te'K'inich II, Phoenicia/Ahiram, Swahili/Al-Hasan ibn Sulaiman
  Teotihuacan/Spearthrower Owl, Thule/Kiviuq, Tibet/Trisong Detsen","I can name several leaders from BBG Expanded based on the information provided:
 
-1. **Trisong Detsen** - Leader of Tibet
-2. **Al-Hasan ibn Sulaiman** - Leader of Swahili
-3. **Kiviuq** - Leader of Thule
-4. **Teotihuacán Spearthrower Owl** - Leader associated with the Aztecs
-5. **Ahiram** - Leader of Phoenicia
-6. **Te' K'inich II** - Leader of Maya
+1. **Ahiram** - Leader of Phoenicia
+2. **Te' K'inich II** - Leader of Maya
+3. **Trisong Detsen** - Leader of Tibet
+4. **Al-Hasan ibn Sulaiman** - Leader of Swahili
+5. **Kiviuq** - Associated with Thule
 
-Any of these would be a correct answer! Each leads a unique civilization in the BBG Expanded mod with their own special abilities and gameplay mechanics.",2,3,"The response correctly identifies most leaders from BBG Expanded, including Trisong Detsen (Tibet), Al-Hasan ibn Sulaiman (Swahili), Kiviuq (Thule), Ahiram (Phoenicia), and Te'K'inich II (Maya). However, there is one error: Spearthrower Owl is associated with Teotihuacan, not the Aztecs as stated in the response. This is a factual inaccuracy that contradicts the source material. The response also omits Olympias (Macedon) and Vercingetorix (Gaul), but since the question only asks to 'name a leader,' completeness is less critical. The response is highly relevant as it directly answers the question by naming multiple valid leaders from BBG Expanded."
-17,Who is Alan Turing?,"Great Scientist who Triggers the Eureka for Computers and 1 random technology from the Modern era. If Computers technology is already triggered, instead completes Computers technology.","# Alan Turing
+I am Montezuma, and while my own civilization is not detailed in the information provided, these are other notable leaders featured in the BBG Expanded mod for Civilization 6.",3,3,"The response correctly names multiple leaders from BBG Expanded, all of which are present in the ideal answer: Ahiram (Phoenicia), Te'K'inich II (Maya), Trisong Detsen (Tibet), Al-Hasan ibn Sulaiman (Swahili), and Kiviuq (Thule). All factual claims match the source material with no hallucinations. The question only asked to name 'a leader' so even one correct answer would suffice, and the response provides five accurate ones. The statement about being Montezuma is a quirky addition but doesn't contradict the source material. The response directly and completely answers what was asked."
+16,Who is Alan Turing?,"Great Scientist who Triggers the Eureka for Computers and 1 random technology from the Modern era. If Computers technology is already triggered, instead completes Computers technology.","Ah, Alan Turing! A remarkable figure in the history of human knowledge. According to the records I have, Alan Turing is a **Great Scientist** from the **Modern Era** in Civilization 6.
 
-Alan Turing is a **Great Scientist** from the **Modern Era** in Civilization 6.
+When you recruit Alan Turing, he triggers the Eureka moment for **Computers** technology and provides a Eureka for **1 random technology from the Modern era**. 
 
-## Ability
+However, there is an interesting mechanic: if the Computers technology has already had its Eureka triggered, Alan Turing will instead **complete the entire Computers technology** outright—a powerful boost to your technological advancement!
 
-When you recruit Alan Turing, he provides the following benefits:
+This ability has remained consistent across many versions of the game, from the base game through version 7.4, making Alan Turing a particularly valuable Great Scientist to recruit when you are pursuing advanced technologies.",2,3,"The response correctly identifies Alan Turing as a Great Scientist, correctly states he triggers the Eureka for Computers and 1 random technology from the Modern era, and correctly notes the mechanic where if Computers Eureka is already triggered, he instead completes the Computers technology. These core facts match the ideal answer exactly. However, the response adds unsupported claims such as 'from the Modern Era' as a descriptor for Alan Turing himself (the ideal answer doesn't specify his era classification), references to specific version numbers ('version 7.4'), and states his ability 'has remained consistent across many versions of the game'—none of which are supported by the source material. These additions are hallucinated details not present in the ideal answer, reducing faithfulness to a 2. The response does directly and completely address the question about Alan Turing's in-game abilities, so relevance is 3."
+17,What does Matterhorn do?,Land combat units who move next to the Matterhorn ignore Hills for the rest of the game.,"Greetings! I shall tell you of the Matterhorn, a wonder of the natural world.
 
-- **Triggers the Eureka moment for Computers technology** and grants an Eureka for 1 random technology from the Modern era
-- **Special condition:** If the Computers technology has already been triggered, Alan Turing will instead **complete the Computers technology entirely**
-
-This makes Alan Turing a powerful choice if you're pursuing a technology-focused strategy in the Modern Era, particularly if you're interested in advancing toward the Information Era technologies that Computers unlocks.",3,3,"The generated response accurately covers all the key points from the ideal answer: Alan Turing is a Great Scientist who triggers the Eureka for Computers and 1 random technology from the Modern era, and if Computers is already triggered, he completes it instead. The additional context about Civilization 6 and strategic advice is reasonable framing that doesn't contradict the source material. All core factual claims match the ideal answer exactly."
-18,What does Matterhorn do?,Land combat units who move next to the Matterhorn ignore Hills for the rest of the game.,"Greetings! I can tell you about the Matterhorn, one of the natural wonders of our world.
-
-The Matterhorn is a one-tile impassable natural wonder that appears as a Mountain. It provides the following benefits:
+The Matterhorn is a single tile natural wonder that appears as a Mountain. It provides the following benefits:
 
 - **+1 Culture** to all adjacent tiles
-- **Land combat units** who move next to the Matterhorn gain a special ability: they will **ignore Hills for the rest of the game**
+- **Land combat units** who move next to the Matterhorn gain a permanent ability to **ignore Hills** for the rest of the game
 
-This makes it a wonder that is particularly valuable for those who wish to strengthen their cultural output and enhance the mobility of their land armies across hilly terrain.",3,3,"The generated response correctly states the key mechanic from the ideal answer: land combat units who move next to the Matterhorn ignore Hills for the rest of the game. It also adds additional details (one-tile impassable natural wonder, appears as Mountain, +1 Culture to adjacent tiles) that are not part of the ideal answer but are factual claims about the Matterhorn in Civilization games. These additional details do not contradict the ideal answer and are consistent with the game's mechanics, so faithfulness remains high. The response directly and completely answers the question, making relevance high as well."
-19,What is the Migration Treaty?,"+20% faster Population growth but -5 Loyalty per turn in this player's cities.
+This makes it a valuable location for both cultural development and military campaigns, as your warriors and soldiers will find traversing hilly terrain far easier once they have encountered this magnificent peak.",2,3,"The response correctly identifies the key mechanic about land combat units ignoring Hills for the rest of the game after moving next to the Matterhorn, which matches the ideal answer. However, it also adds an unsupported claim about '+1 Culture to all adjacent tiles,' which is not mentioned in the ideal answer and may be fabricated or incorrect. This additional unsupported claim reduces the faithfulness score. The response does directly address the question asked, so relevance is high."
+18,What is the Migration Treaty?,"+20% faster Population growth but -5 Loyalty per turn in this player's cities.
  or +5 Loyalty per turn but -20% Population growth in this player's cities.","# The Migration Treaty
 
-The Migration Treaty is a World Congress resolution available from the Renaissance Era onward (in BBG v7.4). It presents contrasting effects:
+Greetings, friend. I shall explain this treaty to you.
 
-**Supporting the Treaty grants:**
-- +20% faster Population growth in your cities
-- BUT -5 Loyalty per turn in your cities
+The **Migration Treaty** is a Congress measure from the Renaissance Era that presents two opposing positions with very different effects on a civilization's growth:
 
-**Opposing the Treaty (or being targeted against it) results in:**
-- -20% Population growth in your cities
-- BUT +5 Loyalty per turn in your cities
+**In favor of the treaty:**
+- +20% faster Population growth
+- But -5 Loyalty per turn in your cities
 
-This treaty creates an interesting strategic choice: do you prioritize rapid expansion through population growth at the cost of loyalty challenges, or do you sacrifice growth for stronger city loyalty? It's a trade-off that different civilizations and game situations might value differently.",3,3,"The generated response accurately captures both outcomes of the Migration Treaty: supporting grants +20% faster Population growth but -5 Loyalty per turn, while opposing grants +5 Loyalty per turn but -20% Population growth. These match the ideal answer exactly. The additional context about it being a World Congress resolution and strategic analysis is supplementary but doesn't contradict the source material. The response directly and completely answers what was asked."
+**Against the treaty:**
+- +5 Loyalty per turn in your cities
+- But -20% Population growth
+
+This treaty forces a strategic choice between rapid population expansion versus maintaining stability and loyalty among your citizens. A civilization focused on aggressive expansion might favor the first position, while one concerned with holding their empire together might prefer the second, even at the cost of slower growth.
+
+The decision depends greatly on your current circumstances and strategic goals, Comrade.",3,3,"The generated response correctly identifies both positions of the Migration Treaty with accurate stats: +20% faster Population growth but -5 Loyalty per turn (for), and +5 Loyalty per turn but -20% Population growth (against). These match the ideal answer exactly. The additional context about it being a Congress measure from the Renaissance Era and strategic advice is extra elaboration but not contradicted by the source. All core factual claims align with the ideal answer."
