@@ -42,6 +42,9 @@ def version_extractor(query: str, history: list) -> ParsedInput:
         - If the query is asking WHICH versions something appears in, or spans
           all versions (e.g. "which versions is X in?", "has X changed across versions?",
           "when was X added?"), set version to null instead of defaulting to v74.
+        - If asked when something was introduced or first appeared, the answer is the
+          earliest bbg_version value you can find across the retrieved information blocks.
+          Do not say you don't know — identify the minimum bbg_version present and state that as the introduction version.
 
         2) CLEANED QUERY
         Fix typos and remove explicit version references (e.g. "in v74", "in version 6.5")
@@ -71,6 +74,11 @@ def version_extractor(query: str, history: list) -> ParsedInput:
         - "which wonders give diplomatic victory points?" → section_hint: "world_wonder"
         - "what are the best wonders to build?" → section_hint: "world_wonder"
         - "which natural wonders give faith?" → section_hint: "natural_wonder"
+        - "what is the Migration Treaty?" → section_hint: "congress"
+        - "which version introduced the expanded leader set?" → section_hint: "bbg_expanded"
+        - "was Spearthrower Owl introduced in bbg expanded?" → section_hint: "bbg_expanded"
+        - "what is the X unique unit?" → section_hint: "units"
+        - "what is the [unit name]?" → section_hint: "units"
         """
 
     cpt = ChatPromptTemplate.from_messages(

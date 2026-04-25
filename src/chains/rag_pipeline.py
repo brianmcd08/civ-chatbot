@@ -20,9 +20,11 @@ def rag_pipeline(query: str, history: list) -> list[Document]:
     extracted_values: ParsedInput = ve.version_extractor(query, recent_history)
 
     # Uncomment to debug version/section extraction during development:
-    # print(f"DEBUG → cleaned='{extracted_values.cleaned_query}', "
-    #       f"version={extracted_values.version}, "
-    #       f"section_hint={extracted_values.section_hint}")
+    # print(
+    #     f"DEBUG → cleaned='{extracted_values.cleaned_query}', "
+    #     f"version={extracted_values.version}, "
+    #     f"section_hint={extracted_values.section_hint}"
+    # )
 
     result: list[Document] = vectorstore_connection.retrieve(
         query=extracted_values.cleaned_query,

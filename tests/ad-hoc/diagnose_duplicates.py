@@ -1,11 +1,5 @@
-"""
-Cheap duplicate diagnostic for scrape_orchestrator.
-Run this BEFORE ingestion to find duplicate IDs without touching embeddings.
-
-Usage (from project root):
-    python diagnose_duplicates.py
-"""
-
+# Ad-hoc script to investigate duplicate chunks in the Chroma vector store.
+# Run once during development (April 2026) to diagnose ingestion issues.
 from collections import Counter
 
 from src.schema import UnifiedEntry
