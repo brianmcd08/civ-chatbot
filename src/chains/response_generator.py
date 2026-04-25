@@ -1,5 +1,3 @@
-import os
-
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import AIMessage, HumanMessage
@@ -7,6 +5,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from src.chains.rag_pipeline import rag_pipeline
+from src.config import ANTHROPIC_MODEL
 
 load_dotenv()
 
@@ -29,7 +28,7 @@ def generate_response(query: str, history: list) -> str:
         else:
             converted_history.append(AIMessage(content=msg["content"]))
 
-    llm = ChatAnthropic(model_name=os.environ["ANTHROPIC_MODEL"], stop=[], timeout=30)
+    llm = ChatAnthropic(model_name=ANTHROPIC_MODEL, stop=[], timeout=30)
     result = rag_pipeline(query, converted_history)
 
     if not result:

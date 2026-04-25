@@ -1,11 +1,10 @@
-import os
 from typing import cast
 
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
-from src.config import Section, Version
+from src.config import ANTHROPIC_MODEL, Section, Version
 from src.schema import ParsedInput
 
 load_dotenv()
@@ -24,7 +23,7 @@ def version_extractor(query: str, history: list) -> ParsedInput:
         ParsedInput: clean query, version, and optional section_hint
     """
 
-    llm = ChatAnthropic(model_name=os.environ["ANTHROPIC_MODEL"], stop=[], timeout=30)
+    llm = ChatAnthropic(model_name=ANTHROPIC_MODEL, stop=[], timeout=30)
     structured_llm = llm.with_structured_output(ParsedInput)
     versions = Version.to_list_of_strings()
     latest_version = Version.get_latest_version()
