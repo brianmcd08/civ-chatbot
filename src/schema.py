@@ -81,9 +81,6 @@ class UnifiedEntry:
         """
         parts: list[str] = [str(self.section)]
 
-        if self.version:
-            parts.append(f"v{self.version}")
-
         # Great people context — type and era come BEFORE the name so the
         # embedding reads "Great General Classical Era Sun Tzu: ..." which
         # gives the model enough context even when the description is short.
@@ -124,7 +121,7 @@ class UnifiedEntry:
             k: v
             for k, v in {
                 "section": self.section,
-                "bbg_version": self.version,
+                "bbg_version": [self.version],
                 "category": self.category,
                 "subcategory": self.subcategory,
                 "civilization": self.civilization,
@@ -137,6 +134,6 @@ class UnifiedEntry:
 
     def generate_hash(self) -> str:
         hash_obj = hashlib.sha256()
-        hash_str = self.section + self.version + (self.name or self.description or "")
+        hash_str = self.section + (self.name or "") + (self.description or "")
         hash_obj.update(hash_str.encode("utf-8"))
         return hash_obj.hexdigest()

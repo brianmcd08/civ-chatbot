@@ -8,8 +8,9 @@ dependencies = [
     "beautifulsoup4>=4.14.3",
     "jupyterlab>=4.5.6",
     "langchain-anthropic>=1.4.1",
-    "langchain-chroma>=1.1.0",
     "langchain-openai>=1.1.14",
+    "langchain-pinecone>=0.2.13",
+    "pinecone-client>=6.0.0",
     "requests>=2.33.1",
     "streamlit>=1.56.0",
 ]

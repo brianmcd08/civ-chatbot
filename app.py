@@ -3,8 +3,26 @@ import streamlit as st
 from src.chains.response_generator import generate_response
 
 st.title("Civilization 6 Chatbot")
-st.write("My name is Monte. How may I help you?")
 
+# --- Password gate ---
+def check_password():
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
+
+    if not st.session_state.authenticated:
+        password = st.text_input("Enter password to continue:", type="password")
+        if password:
+            if password == st.secrets["APP_PASSWORD"]:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Incorrect password.")
+        st.stop()
+
+check_password()
+# --- End password gate ---
+
+st.write("My name is Monte. How may I help you?")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
@@ -22,6 +40,5 @@ if prompt := st.chat_input("You got a question for Monte?"):
         prior_messages = st.session_state.messages[:-1]
         answer = generate_response(prompt, prior_messages)
 
-        # answer = generate_response(prompt)
         st.session_state.messages.append({"role": "assistant", "content": answer})
         st.markdown(answer)

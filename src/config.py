@@ -6,15 +6,6 @@ class Version(StrEnum):
     V73 = "7.3"
     V72 = "7.2"
     V71 = "7.1"
-    V65 = "6.5"
-    V64 = "6.4"
-    V63 = "6.3"
-    V62 = "6.2"
-    V61 = "6.1"
-    V60 = "6.0"
-    V58 = "5.8"
-    V57 = "5.7"
-    V56 = "5.6"
     VBASE = "base_game"
 
     @classmethod

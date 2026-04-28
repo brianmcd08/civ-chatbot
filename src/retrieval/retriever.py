@@ -1,21 +1,21 @@
 # Given a clean query string and an optional version string (parsed from the chain),
 # return relevant Documents. This file knows nothing about LLMs or intent parsing.
 
+import os
 from typing import Any
 
-from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
+from langchain_pinecone import PineconeVectorStore
 
 from src.config import Version
 
 
 class Retriever:
     def __init__(self) -> None:
-        self.vector_store = Chroma(
-            collection_name="civilization6_collection",
-            embedding_function=OpenAIEmbeddings(model="text-embedding-3-small"),
-            persist_directory="./chroma_langchain_db",
+        self.vector_store = PineconeVectorStore(
+            index_name=os.environ["PINECONE_INDEX_NAME"],
+            embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
         )
 
     def retrieve(
@@ -29,15 +29,13 @@ class Retriever:
 
         Version-specific query (version is set):
             Filter to that version only. This keeps the search space small
-            (~2,400 docs) and precision is high.
+            and precision is high.
 
         Cross-version query (version is None):
-            Previously this searched all 32k docs unfiltered, which meant
-            the 17k names entries dominated the k=25 results. Now, if the
-            version_extractor inferred a section_hint (e.g. "units" for a
+            If the version_extractor inferred a section_hint (e.g. "units" for a
             question about the Eagle Warrior), we filter to that section
-            across all versions instead. This reduces the search space from
-            32k to ~1,980 docs for units, giving the right entries a fair shot.
+            across all versions. This reduces the search space and gives the
+            right entries a fair shot.
 
             If no section_hint was provided, we fall back to an unfiltered
             search but exclude the names section, which is pure lookup data
@@ -52,27 +50,25 @@ class Retriever:
             list[Document]
         """
 
-        chroma_filter: dict[str, Any]
+        pinecone_filter: dict[str, Any]
         k = 25
 
         if version is not None and section_hint is not None:
-            chroma_filter = {
-                "$and": [{"bbg_version": version}, {"section": section_hint}]
+            pinecone_filter = {
+                "$and": [
+                    {"bbg_version": {"$in": [version]}},
+                    {"section": {"$eq": section_hint}},
+                ]
             }
         elif version is not None:
-            # Version-specific: filter to that version
-            chroma_filter = {"bbg_version": version}
+            pinecone_filter = {"bbg_version": {"$in": [version]}}
         elif section_hint is not None:
-            # Cross-version with a section hint: filter to that section only
-            chroma_filter = {"section": section_hint}
+            pinecone_filter = {"section": {"$eq": section_hint}}
         else:
-            # Cross-version, no hint: exclude the names section which is pure
-            # lookup noise and drowns out balance-relevant results.
-            # Chroma's $ne operator filters out documents where section == "names".
-            chroma_filter = {"section": {"$ne": "names"}}
+            pinecone_filter = {"section": {"$ne": "names"}}
             k = 40
 
-        result = self.vector_store.similarity_search(query, k=k, filter=chroma_filter)
+        result = self.vector_store.similarity_search(query, k=k, filter=pinecone_filter)
 
         # Fallback: if the filtered search returned nothing at all, retry
         # completely unfiltered so we never return an empty result when docs exist.
