@@ -9,12 +9,16 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 
 from src.config import Version
+from src.secrets import get_secret
+
+os.environ["OPENAI_API_KEY"] = get_secret("OPENAI_API_KEY")
+os.environ["PINECONE_API_KEY"] = get_secret("PINECONE_API_KEY")
 
 
 class Retriever:
     def __init__(self) -> None:
         self.vector_store = PineconeVectorStore(
-            index_name=os.environ["PINECONE_INDEX_NAME"],
+            index_name=get_secret("PINECONE_INDEX_NAME"),
             embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
         )
 

@@ -1,13 +1,14 @@
 from typing import cast
 
-from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from src.config import ANTHROPIC_MODEL, Section, Version
 from src.schema import ParsedInput
+from src.secrets import get_secret
 
-load_dotenv()
+import os
+os.environ["ANTHROPIC_API_KEY"] = get_secret("ANTHROPIC_API_KEY")
 
 
 def version_extractor(query: str, history: list) -> ParsedInput:
