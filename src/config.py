@@ -40,3 +40,4 @@ class Section(StrEnum):
 
 ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 ANTHROPIC_JUDGE = "claude-sonnet-4-6"
+HISTORY_LIMIT = 20
