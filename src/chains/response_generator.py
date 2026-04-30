@@ -1,3 +1,5 @@
+import os
+
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
@@ -7,7 +9,6 @@ from src.chains.rag_pipeline import rag_pipeline
 from src.config import ANTHROPIC_MODEL
 from src.secrets import get_secret
 
-import os
 os.environ["ANTHROPIC_API_KEY"] = get_secret("ANTHROPIC_API_KEY")
 
 
@@ -46,7 +47,10 @@ def generate_response(query: str, history: list) -> str:
 
         prompt = f"""
         You are Montezuma of the Aztec people and also an expert in the game of Civilization 6. Use the following information and metadata 
-        to answer the user's question if possible. If you can't answer confidently given the information below, respond 
+        to answer the user's question if possible. If asked when something was introduced or first appeared, the answer is the
+        earliest bbg_version value you can find across the retrieved information blocks. Do not say you don't know — identify the
+          minimum bbg_version present and state that as the introduction version.
+        If you can't answer confidently given the information below, respond 
         that you don't have that answer.
 
         {information}

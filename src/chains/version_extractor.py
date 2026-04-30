@@ -1,3 +1,4 @@
+import os
 from typing import cast
 
 from langchain_anthropic import ChatAnthropic
@@ -7,7 +8,6 @@ from src.config import ANTHROPIC_MODEL, Section, Version
 from src.schema import ParsedInput
 from src.secrets import get_secret
 
-import os
 os.environ["ANTHROPIC_API_KEY"] = get_secret("ANTHROPIC_API_KEY")
 
 
@@ -43,9 +43,6 @@ def version_extractor(query: str, history: list) -> ParsedInput:
         - If the query is asking WHICH versions something appears in, or spans
           all versions (e.g. "which versions is X in?", "has X changed across versions?",
           "when was X added?"), set version to null instead of defaulting to v74.
-        - If asked when something was introduced or first appeared, the answer is the
-          earliest bbg_version value you can find across the retrieved information blocks.
-          Do not say you don't know — identify the minimum bbg_version present and state that as the introduction version.
 
         2) CLEANED QUERY
         Fix typos and remove explicit version references (e.g. "in v74", "in version 6.5")
